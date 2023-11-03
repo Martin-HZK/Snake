@@ -1,3 +1,5 @@
+package com.snakeGame;
+
 import javax.swing.JFrame;
 
 
