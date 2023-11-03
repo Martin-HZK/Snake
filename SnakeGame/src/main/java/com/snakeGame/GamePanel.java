@@ -1,5 +1,7 @@
 package com.snakeGame;
 
+import javafx.scene.layout.Pane;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -22,7 +24,7 @@ public class GamePanel extends JPanel implements ActionListener{
 	boolean running = false;
 	Timer timer;
 	Random random;
-	
+
 	GamePanel(){
 		random = new Random();
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH,SCREEN_HEIGHT));
@@ -42,7 +44,7 @@ public class GamePanel extends JPanel implements ActionListener{
 		draw(g);
 	}
 	public void draw(Graphics g) {
-		
+
 		if(running) {
 			/*
 			for(int i=0;i<SCREEN_HEIGHT/UNIT_SIZE;i++) {
@@ -52,7 +54,7 @@ public class GamePanel extends JPanel implements ActionListener{
 			*/
 			g.setColor(Color.red);
 			g.fillOval(appleX, appleY, UNIT_SIZE, UNIT_SIZE);
-		
+
 			for(int i = 0; i< bodyParts;i++) {
 				if(i == 0) {
 					g.setColor(Color.green);
@@ -62,7 +64,7 @@ public class GamePanel extends JPanel implements ActionListener{
 					g.setColor(new Color(45,180,0));
 					//g.setColor(new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255)));
 					g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
-				}			
+				}
 			}
 			g.setColor(Color.red);
 			g.setFont( new Font("Ink Free",Font.BOLD, 40));
@@ -72,7 +74,7 @@ public class GamePanel extends JPanel implements ActionListener{
 		else {
 			gameOver(g);
 		}
-		
+
 	}
 	public void newApple(){
 		appleX = random.nextInt((int)(SCREEN_WIDTH/UNIT_SIZE))*UNIT_SIZE;
@@ -83,7 +85,7 @@ public class GamePanel extends JPanel implements ActionListener{
 			x[i] = x[i-1];
 			y[i] = y[i-1];
 		}
-		
+
 		switch(direction) {
 		case 'U':
 			y[0] = y[0] - UNIT_SIZE;
@@ -98,7 +100,7 @@ public class GamePanel extends JPanel implements ActionListener{
 			x[0] = x[0] + UNIT_SIZE;
 			break;
 		}
-		
+
 	}
 	public void checkApple() {
 		if((x[0] == appleX) && (y[0] == appleY)) {
@@ -130,7 +132,7 @@ public class GamePanel extends JPanel implements ActionListener{
 		if(y[0] > SCREEN_HEIGHT) {
 			running = false;
 		}
-		
+
 		if(!running) {
 			timer.stop();
 		}
@@ -149,7 +151,7 @@ public class GamePanel extends JPanel implements ActionListener{
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+
 		if(running) {
 			move();
 			checkApple();
@@ -157,7 +159,7 @@ public class GamePanel extends JPanel implements ActionListener{
 		}
 		repaint();
 	}
-	
+
 	public class MyKeyAdapter extends KeyAdapter{
 		@Override
 		public void keyPressed(KeyEvent e) {
@@ -186,3 +188,5 @@ public class GamePanel extends JPanel implements ActionListener{
 		}
 	}
 }
+
+// TODO: implement in Javafx
