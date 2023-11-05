@@ -1,9 +1,8 @@
-package com.snakeGame;
+package com.t.snakeGame;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 //import javax.swing.JFrame;
 
 //public class GameFrame extends JFrame  {
@@ -25,7 +24,7 @@ import javafx.stage.Stage;
 
 public class GameFrame extends Application{
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws Exception{
         GamePanel gamePanel = new GamePanel();
         Scene scene = new Scene(gamePanel);
 
@@ -33,10 +32,11 @@ public class GameFrame extends Application{
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
+
     }
 
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 }
 
