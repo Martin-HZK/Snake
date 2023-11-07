@@ -5,12 +5,17 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-import java.awt.*;
-import java.awt.event.*;
+//import java.awt.*;
+//import java.awt.event.*;
 //import javax.swing.*;
 import java.util.Random;
 //
@@ -197,7 +202,7 @@ import java.util.Random;
 //}
 
 // TODO: implement in Javafx
-public class GamePanel extends Pane  {
+public class GamePanel extends Pane {
 
 	static final int SCREEN_WIDTH = 1300;
 	static final int SCREEN_HEIGHT = 750;
@@ -213,86 +218,81 @@ public class GamePanel extends Pane  {
 	char direction = 'R';
 	boolean running = false;
 	AnimationTimer timer;
-	Random random;
+	Random random = new Random();
 
 	// below are the own-added vars
-	Stage playWindow;
+//	Stage playWindow;
 	Scene playingScene;
 
-	GamePanel(){
-		random = new Random();
-		this.setPrefSize(SCREEN_WIDTH,SCREEN_HEIGHT);
-		this.setStyle("-fx-background-color: black;");
-		this.setFocusTraversable(true);
-		this.setOnKeyPressed(e -> {
-			switch ((e.getCode())) {
-				case LEFT:
-					if(direction != 'R') {
-					direction = 'L';
-				}
-				break;
-			case RIGHT:
-				if(direction != 'L') {
-					direction = 'R';
-				}
-				break;
-			case UP:
-				if(direction != 'D') {
-					direction = 'U';
-				}
-				break;
-			case DOWN:
-				if(direction != 'U') {
-					direction = 'D';
-				}
-				break;
-			}
-		});
-//		startGame();
-	}
-//	public void startGame() {
-//		newApple();
-//		running = true;
-//		timer = new AnimationTimer() {
-//			@Override
-//			public void handle(long l) {
+//	GamePanel(){
+//		random = new Random();
+////		this.setPrefSize(SCREEN_WIDTH,SCREEN_HEIGHT);
+////		this.setStyle("-fx-background-color: black;");
+//		this.setFocusTraversable(true);
 //
-//			}
-//		}
-//		timer.start();
+////		this.start(null);
 //	}
+
 	/**
 	 * This is the start stage
 	 * @param primaryStage
 	 */
 	public void start(Stage primaryStage) {
 		// for the primitive version, we only have 2 stages,one gaming stage, one game over stage
-		playWindow = primaryStage;
-
-
+//		playWindow = primaryStage;
 		Pane root = new StackPane();
+//		this.setStyle("-fx-background-color: black;");
 
-		Scene scene1 = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
-		playWindow.setScene(scene1);
-		playWindow.setTitle("Snake");
+		Canvas canvas = new Canvas(SCREEN_WIDTH, SCREEN_HEIGHT);
+		root.getChildren().add(canvas);
+		GraphicsContext gc = canvas.getGraphicsContext2D();
+
+
+		playingScene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
+		playingScene.setFill(Color.BLACK);
+		primaryStage.setScene(playingScene);
+		primaryStage.setTitle("Snake");
 		primaryStage.show();
 
-//		newApple();
-//		running = true;
-//		timer = new AnimationTimer() {
-//			@Override
-//			public void handle(long l) {
-//
-//			}
-//		}
-//		timer.start();
+		newApple();
+		playingScene.setOnKeyPressed(e -> {
+			switch ((e.getCode())) {
+				case LEFT:
+					if(direction != 'R') {
+						direction = 'L';
+					}
+					break;
+				case RIGHT:
+					if(direction != 'L') {
+						direction = 'R';
+					}
+					break;
+				case UP:
+					if(direction != 'D') {
+						direction = 'U';
+					}
+					break;
+				case DOWN:
+					if(direction != 'U') {
+						direction = 'D';
+					}
+					break;
+			}
+		});
 
-
-
-
-
-
-
+		running = true;
+		timer = new AnimationTimer() {
+			@Override
+			public void handle(long l) {
+				if (running){
+					move();
+					checkApple();
+					checkCollisions();
+				}
+				draw(gc);
+			}
+		};
+		timer.start();
 
 	}
 
@@ -305,7 +305,7 @@ public class GamePanel extends Pane  {
 //		draw(g);
 //	}
 
-	public void draw(Graphics g) {
+	public void draw(GraphicsContext g) {
 		if(running) {
 			/*
 			for(int i=0;i<SCREEN_HEIGHT/UNIT_SIZE;i++) {
@@ -313,24 +313,24 @@ public class GamePanel extends Pane  {
 				g.drawLine(0, i*UNIT_SIZE, SCREEN_WIDTH, i*UNIT_SIZE);
 			}
 			*/
-			g.setColor(Color.red);
+			g.setFill(Color.RED);
 			g.fillOval(appleX, appleY, UNIT_SIZE, UNIT_SIZE);
 
 			for(int i = 0; i< bodyParts;i++) {
 				if(i == 0) {
-					g.setColor(Color.green);
+					g.setFill(Color.GREEN);
 					g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
 				}
 				else {
-					g.setColor(new Color(45,180,0));
+					g.setFill(new Color(45.0/255,180.0/255,0,  1.0));
 					//g.setColor(new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255)));
 					g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
 				}
 			}
-			g.setColor(Color.red);
-			g.setFont( new Font("Ink Free",Font.BOLD, 40));
-			FontMetrics metrics = g.getFontMetrics();
-			g.drawString("Score: "+applesEaten, (SCREEN_WIDTH - metrics.stringWidth("Score: "+applesEaten))/2, g.getFont().getSize());
+			g.setFill(Color.RED);
+			g.setFont(Font.font("Ink Free", FontWeight.BOLD, 40));
+//			FontMetrics metrics = g.getFontMetrics();
+			g.fillText("Score: "+applesEaten, (SCREEN_WIDTH - ("Score: "+applesEaten).length()*10)/2, g.getFont().getSize());
 		}
 		else {
 			gameOver(g);
@@ -393,17 +393,17 @@ public class GamePanel extends Pane  {
 			timer.stop();
 		}
 	}
-	public void gameOver(Graphics g) {
+	public void gameOver(GraphicsContext g) {
 		//Score
-		g.setColor(Color.red);
-		g.setFont( new Font("Ink Free",Font.BOLD, 40));
-		FontMetrics metrics1 = g.getFontMetrics();
-		g.drawString("Score: "+applesEaten, (SCREEN_WIDTH - metrics1.stringWidth("Score: "+applesEaten))/2, g.getFont().getSize());
+		g.setFill(Color.RED);
+		g.setFont(Font.font("Ink Free",FontWeight.BOLD, 40));// Font.font("Ink Free", FontWeight.BOLD, 40)
+//		FontMetrics metrics1 = g.getFontMetrics();
+		g.fillText("Score: "+applesEaten, (SCREEN_WIDTH - ("Score: "+applesEaten).length() * 10)/2, g.getFont().getSize());
 		//Game Over text
-		g.setColor(Color.red);
-		g.setFont( new Font("Ink Free",Font.BOLD, 75));
-		FontMetrics metrics2 = g.getFontMetrics();
-		g.drawString("Game Over lol get rekt", (SCREEN_WIDTH - metrics2.stringWidth("Game Over lol get rekt"))/2, SCREEN_HEIGHT/2);
+		g.setFill(Color.RED);
+		g.setFont(Font.font("Ink Free",FontWeight.BOLD, 75));
+//		FontMetrics metrics2 = g.getFontMetrics();
+		g.fillText("Game Over lol get rekt", (SCREEN_WIDTH - ("Game Over lol get rekt").length() * 10)/2, SCREEN_HEIGHT/2);
 	}
 	// in javafx we use animation timer to do the repaint
 //	@Override
