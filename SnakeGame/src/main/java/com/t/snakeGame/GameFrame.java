@@ -89,7 +89,7 @@ public class GameFrame extends Application{
                         checkApple();
                         checkCollisions();
                         gc.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-                        System.out.println("We move");
+//                        System.out.println("We move");
                     }
                     draw(gc);
                     return;
@@ -101,7 +101,7 @@ public class GameFrame extends Application{
                         checkApple();
                         checkCollisions();
                         gc.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-                        System.out.println("We move");
+//                        System.out.println("We move");
                     }
                     draw(gc);
                     count = 0;
@@ -171,7 +171,7 @@ public class GameFrame extends Application{
             x[i] = x[i-1];
             y[i] = y[i-1];
         }
-        System.out.println("The direction is" + direction);
+//        System.out.println("The direction is" + direction);
 
         switch(direction) {
             case 'U':
@@ -234,7 +234,7 @@ public class GameFrame extends Application{
         g.setFill(Color.RED);
         g.setFont(Font.font("Ink Free",FontWeight.BOLD, 75));
 //		FontMetrics metrics2 = g.getFontMetrics();
-        g.fillText("Game Over lol get rekt", (SCREEN_WIDTH - ("Game Over lol get rekt").length() * 10)/2, SCREEN_HEIGHT/2);
+        g.fillText("Game Over lol get rekt", (SCREEN_WIDTH - ("Game Over lol get rekt").length()*35)/2, SCREEN_HEIGHT/2);
     }
 
     public static void main(String[] args) {
