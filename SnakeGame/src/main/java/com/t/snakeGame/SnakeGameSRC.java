@@ -1,6 +1,4 @@
-package com.snakeGame;
-
-import com.snakeGame.GameFrame;
+package com.t.snakeGame;
 
 public class SnakeGameSRC {
     public static void main(String[]args) {
