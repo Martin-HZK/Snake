@@ -2,6 +2,8 @@ package com.t.snakeGame;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -13,25 +15,8 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 import java.util.Random;
-//import javax.swing.JFrame;
-
-//public class GameFrame extends JFrame  {
-//
-//     GameFrame(){
-//
-//        this.add(new GamePanel());
-//        this.setTitle("Snake");
-//        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        this.setResizable(false);
-//        this.pack();
-//        this.setVisible(true);
-//        this.setLocationRelativeTo(null);
-//
-//     }
-//}
 
 // TODO: implement in javafx
-
 public class GameFrame extends Application{
     static final int SCREEN_WIDTH = 1300;
     static final int SCREEN_HEIGHT = 750;
@@ -51,14 +36,6 @@ public class GameFrame extends Application{
     Random random = new Random();
     @Override
     public void start(Stage primaryStage) throws Exception{
-//        GamePanel gamePanel = new GamePanel();
-//        Scene scene = new Scene(gamePanel);
-//
-//        primaryStage.setTitle("Snake");
-//        primaryStage.setScene(scene);
-//        primaryStage.setResizable(false);
-//        primaryStage.show();
-
 
         Pane root = new StackPane();
         Scene playingScene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
