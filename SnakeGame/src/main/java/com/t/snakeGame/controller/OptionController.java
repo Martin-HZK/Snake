@@ -1,12 +1,12 @@
-package controller;
+package com.t.snakeGame.controller;
 
 import javafx.event.ActionEvent;
-import view.Main;
+import com.t.snakeGame.Main;
 
 import java.io.IOException;
 
 public class OptionController {
     public void switchOnBackClick(ActionEvent actionEvent) throws IOException {
-        Main.setRoot("startMain");
+        Main.setRoot("/com.t.snakeGame/startMain");
     }
 }

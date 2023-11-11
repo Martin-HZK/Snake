@@ -1,11 +1,10 @@
-package view;
+package com.t.snakeGame;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import view.PlayingView;
 
 import java.io.IOException;
 
@@ -22,21 +21,21 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/view/startMain.fxml"));
+        loader.setLocation(getClass().getResource("/com.t.snakeGame/startMain.fxml"));
         Parent root = loader.load();
 
 //            Apple originApple = new Apple();
 //            Snake snake = new Snake();
 //            Controller.MainController mainController = new Controller.MainController();
 //            MainView view = new MainView(originApple, snake, mainController);
-        Scene scene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
+        scene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
         stage.setTitle("Snake");
         stage.setScene(scene);
         stage.show();
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(PlayingView.class.getResource(fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
     public static void setRoot(String fxml) throws IOException {

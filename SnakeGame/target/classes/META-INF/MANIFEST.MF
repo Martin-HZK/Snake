@@ -1,1 +1,1 @@
-view.Main-Class: com.t.snakeGame.SnakeGameSRC
+view.com.t.snakeGame.Main-Class: com.t.snakeGame.SnakeGameSRC

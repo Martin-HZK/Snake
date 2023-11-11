@@ -1,15 +1,13 @@
-package view;
+package com.t.snakeGame.view;
 
-import controller.MainController;
-import model.Apple;
-import model.Snake;
+import com.t.snakeGame.controller.MainController;
+import com.t.snakeGame.model.Apple;
+import com.t.snakeGame.model.Snake;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class PlayingView extends StackPane {
     private Apple apple;
@@ -28,22 +26,16 @@ public class PlayingView extends StackPane {
         StackPane stackPane = new StackPane();
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/view/playingView.fxml"));
+        loader.setLocation(getClass().getResource("/com.t.snakeGame/view/playingView.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 
         playingStage.setTitle("Snake");
-        playingStage.setScene(scene);
+//        playingStage.setScene(scene);
         playingStage.show();
     }
 
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(PlayingView.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
-    public static void setRoot(String fxml) throws IOException {
-        mainScene.setRoot(loadFXML(fxml));
-    }
+
 
 }
