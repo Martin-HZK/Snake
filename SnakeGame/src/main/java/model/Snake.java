@@ -1,4 +1,5 @@
-package Model;
+package model;
 
 public class Snake {
+
 }

@@ -5,5 +5,7 @@ module com.t.snakeGame {
     requires java.desktop;
 
     opens com.t.snakeGame to javafx.fxml;
-    exports com.t.snakeGame;
+//    exports com.t.snakeGame;
+//    exports;
+//    opens to
 }
