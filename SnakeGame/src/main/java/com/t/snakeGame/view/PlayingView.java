@@ -32,7 +32,7 @@ public class PlayingView extends StackPane {
 
 
         playingStage.setTitle("Snake");
-//        playingStage.setScene(scene);
+        playingStage.setScene(scene);
         playingStage.show();
     }
 

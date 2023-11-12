@@ -24,10 +24,6 @@ public class Main extends Application {
         loader.setLocation(getClass().getResource("/com.t.snakeGame/startMain.fxml"));
         Parent root = loader.load();
 
-//            Apple originApple = new Apple();
-//            Snake snake = new Snake();
-//            Controller.MainController mainController = new Controller.MainController();
-//            MainView view = new MainView(originApple, snake, mainController);
         scene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
         stage.setTitle("Snake");
         stage.setScene(scene);
