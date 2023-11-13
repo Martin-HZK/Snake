@@ -7,26 +7,35 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
+<!--        static final int SCREEN_WIDTH = 1300;-->
+<!--        static final int SCREEN_HEIGHT = 750;-->
 
 <AnchorPane prefHeight="750" prefWidth="1300" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.t.snakeGame.controller.MainController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="244.0" layoutY="129.0" text="Snake" textFill="#fc310d">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="494.0" layoutY="235.0" text="Snake" textFill="#fc310d">
          <font>
-            <Font size="39.0" />
+            <Font size="96.0" />
          </font>
       </Label>
-      <HBox alignment="TOP_CENTER" layoutX="90.0" layoutY="295.0" prefHeight="28.0" prefWidth="420.0">
+      <HBox alignment="CENTER" layoutX="319.0" layoutY="525.0" prefHeight="78.0" prefWidth="675.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#switchOnInfoClick" text="INFO" />
+            <Button mnemonicParsing="false" onAction="#switchOnInfoClick" text="INFO">
+               <font>
+                  <Font size="30.0" />
+               </font></Button>
             <Button mnemonicParsing="false" onAction="#switchOnStartClick" text="START">
                <HBox.margin>
-                  <Insets left="50.0" right="50.0" />
+                  <Insets left="100.0" right="100.0" />
                </HBox.margin>
+               <font>
+                  <Font size="30.0" />
+               </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#switchOnOptionClick" text="OPTION" />
+            <Button mnemonicParsing="false" onAction="#switchOnOptionClick" text="OPTION">
+               <font>
+                  <Font size="30.0" />
+               </font></Button>
          </children>
       </HBox>
    </children>
 </AnchorPane>
-<!--        static final int SCREEN_WIDTH = 1300;-->
-<!--        static final int SCREEN_HEIGHT = 750;-->

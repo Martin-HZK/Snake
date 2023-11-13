@@ -2,6 +2,7 @@ package com.t.snakeGame.model;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 import java.util.Random;
@@ -17,7 +18,7 @@ public class Apple {
 
 
 
-    private BooleanProperty isEaten;
+    private BooleanProperty isEaten = new SimpleBooleanProperty(false);
 
 
 

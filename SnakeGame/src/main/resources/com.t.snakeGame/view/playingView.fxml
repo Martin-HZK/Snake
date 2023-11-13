@@ -7,12 +7,14 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.canvas.Canvas?>
-<BorderPane xmlns="http://javafx.com/javafx"
+<BorderPane fx:id="playingScene"
+            xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.t.snakeGame.controller.PlayingController"
             prefHeight="750" prefWidth="1300">
     <center>
         <Canvas fx:id="canvas" width="1300" height="750" />
+
     </center>
 
 </BorderPane>

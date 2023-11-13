@@ -6,13 +6,14 @@ import com.t.snakeGame.model.Snake;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class PlayingView extends StackPane {
+public class PlayingView extends BorderPane {
     private Apple apple;
     private Snake snake;
-    private MainController controller;
+//    private MainController controller;
     private Stage playingStage;
     private static Scene mainScene;
     public static final int SCREEN_WIDTH = 1300;
@@ -21,10 +22,10 @@ public class PlayingView extends StackPane {
 
     public static final int GAME_UNITS = (SCREEN_WIDTH*SCREEN_HEIGHT)/(UNIT_SIZE*UNIT_SIZE);
 
-    public PlayingView(Apple newApple, Snake newSnake, MainController newController) throws Exception{
+    public PlayingView(Apple newApple, Snake newSnake) throws Exception{
         apple = newApple;
         snake = newSnake;
-        controller = newController;
+//        controller = newController;
 
         StackPane stackPane = new StackPane();
 
