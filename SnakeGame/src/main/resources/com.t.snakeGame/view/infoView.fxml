@@ -10,9 +10,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.t.snakeGame.controller.InfoController">
+<AnchorPane prefHeight="750" prefWidth="1300" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.t.snakeGame.controller.InfoController">
    <children>
-      <HBox alignment="CENTER" layoutX="416.0" layoutY="316.0" prefHeight="55.0" prefWidth="200.0">
+      <HBox alignment="CENTER" layoutX="1012.0" layoutY="621.0" prefHeight="55.0" prefWidth="200.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -20,16 +20,16 @@
             <Button mnemonicParsing="false" onAction="#switchOnBackClick" text="Back" textAlignment="CENTER" />
          </children>
       </HBox>
-      <StackPane layoutX="230.0" layoutY="14.0" prefHeight="83.0" prefWidth="120.0">
+      <StackPane layoutX="470.0" layoutY="108.0" prefHeight="123.0" prefWidth="307.0">
          <children>
-            <Label text="About" textFill="#fc310d">
+            <Label prefWidth="543.0" text="About" textFill="#fc310d">
                <font>
-                  <Font size="39.0" />
+                  <Font size="96.0" />
                </font>
             </Label>
          </children>
       </StackPane>
-      <HBox layoutX="70.0" layoutY="96.0" prefHeight="223.0" prefWidth="472.0">
+      <HBox layoutX="411.0" layoutY="264.0" prefHeight="223.0" prefWidth="472.0">
          <children>
             <Pane prefHeight="185.0" prefWidth="176.0">
                <children>

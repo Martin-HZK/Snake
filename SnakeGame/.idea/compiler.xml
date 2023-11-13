@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="SnakeGame-master" target="9" />
+      <module name="SnakeGame-master" target="16" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

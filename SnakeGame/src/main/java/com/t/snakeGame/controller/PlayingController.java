@@ -5,6 +5,7 @@ import com.t.snakeGame.model.Apple;
 import com.t.snakeGame.model.Snake;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -12,19 +13,55 @@ import javafx.scene.text.FontWeight;
 
 import java.io.IOException;
 
+import static com.t.snakeGame.view.PlayingView.*;
+
 public class PlayingController {
-    static final int SCREEN_WIDTH = 1300;
-    static final int SCREEN_HEIGHT = 750;
+//    static final int SCREEN_WIDTH = 1300;
+//    static final int SCREEN_HEIGHT = 750;
     private Snake snake;
     private Apple apple;
     @FXML
+    private Canvas playingCanvas;
+    @FXML
     public void initialize() {
         snake = new Snake();
-        apple = new Apple(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+        apple = new Apple(10,10); // we just initialize like this
+
+        GraphicsContext gc = playingCanvas.getGraphicsContext2D();
+        gc.setFill(Color.BLACK);
+        gc.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+        gc.setFill(Color.RED);
+        gc.fillOval(apple.getAppleX(), apple.getAppleY(), UNIT_SIZE, UNIT_SIZE);
+
     }
-//    public void switchOnBackClick(ActionEvent actionEvent) throws IOException {
-//        Main.setRoot("startMain");
-//    }
+
+    public void draw(GraphicsContext g) {
+        if(snake.runningProperty().get()) { // do we need to change the name of the method
+            g.setFill(Color.RED);
+            g.fillOval(apple.getAppleX(), apple.getAppleY(), UNIT_SIZE, UNIT_SIZE);
+
+            for(int i = 0; i< snake.bodyParts;i++) {
+                if(i == 0) {
+                    g.setFill(Color.GREEN);
+                    g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
+                }
+                else {
+                    g.setFill(new Color(45.0/255,180.0/255,0,  1.0));
+                    g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
+                }
+            }
+            g.setFill(Color.RED);
+            g.setFont(Font.font("Ink Free", FontWeight.BOLD, 40));
+            g.fillText("Score: "+applesEaten, (SCREEN_WIDTH - ("Score: "+applesEaten).length()*10)/2, g.getFont().getSize());
+        }
+        else {
+            gameOver(g);
+        }
+    }
+
+
+
 //    public timer = new AnimationTimer() {
 //        @Override
 //        public void handle(long l) {
@@ -85,7 +122,7 @@ public class PlayingController {
         g.setFill(Color.RED);
         g.setFont(Font.font("Ink Free", FontWeight.BOLD, 40));// Font.font("Ink Free", FontWeight.BOLD, 40)
 //		FontMetrics metrics1 = g.getFontMetrics();
-        g.fillText("Score: "+applesEaten, (SCREEN_WIDTH - ("Score: "+applesEaten).length() * 10)/2, g.getFont().getSize());
+        g.fillText("Score: "+this.apple.getApplesEaten(), (SCREEN_WIDTH - ("Score: "+this.apple.getApplesEaten()).length() * 10)/2, g.getFont().getSize());
         //Game Over text
         g.setFill(Color.RED);
         g.setFont(Font.font("Ink Free",FontWeight.BOLD, 75));

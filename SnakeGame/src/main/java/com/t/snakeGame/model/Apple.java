@@ -15,8 +15,14 @@ public class Apple {
     static final int SCREEN_HEIGHT = 750;
     static final int UNIT_SIZE = 50;
 
-    BooleanProperty isEaten;
-    static IntegerProperty applesEaten = new SimpleIntegerProperty(0);
+
+
+    private BooleanProperty isEaten;
+
+
+
+
+    private IntegerProperty applesEaten = new SimpleIntegerProperty(0);
 
     /**
      * Constructor for Apple class
@@ -45,6 +51,24 @@ public class Apple {
     public int getAppleY() {
         return appleY.get();
     }
+
+
+    public void setApplesEaten(int applesEaten) {
+        this.applesEaten.set(applesEaten);
+    }
+
+    public int getApplesEaten() {
+        return applesEaten.get();
+    }
+
+    public boolean getIsEaten() {
+        return isEaten.get();
+    }
+
+    public void setIsEaten(boolean isEaten) {
+        this.isEaten.set(isEaten);
+    }
+
     // needs communication between model and controller to check whether the snake has eaten the apple
     public void checkApple() {
         // we need to use the controller to check if the snake has eaten the apple
