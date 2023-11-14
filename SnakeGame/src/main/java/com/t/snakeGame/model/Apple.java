@@ -66,8 +66,8 @@ public class Apple {
         return isEaten.get();
     }
 
-    public void setIsEaten(boolean isEaten) {
-        this.isEaten.set(isEaten);
+    public void setIsEaten(boolean iseaten) {
+        this.isEaten.set(iseaten);
     }
 
     // needs communication between model and controller to check whether the snake has eaten the apple
@@ -76,6 +76,7 @@ public class Apple {
         if (isEaten.get() == true) {
             newApple();
             applesEaten.set(applesEaten.get() + 1);
+            isEaten.set(false);
         }else {
             return;
         }

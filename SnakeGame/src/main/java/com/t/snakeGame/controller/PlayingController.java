@@ -52,6 +52,10 @@ public class PlayingController {
             if (count == 0) {
                 if (snake.isRunning()) {
                     snake.move();
+                    if (snake.getHeadX() == apple.getAppleX() && snake.getHeadY() == apple.getAppleY()) {
+                        apple.setIsEaten(true);
+                        snake.setBodyParts(snake.getBodyParts() + 1);
+                    }
                     apple.checkApple();
                     snake.checkCollisions();
                     gc.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -63,6 +67,10 @@ public class PlayingController {
             if (count > DELAY){
                 if (snake.isRunning()) {
                     snake.move();
+                    if (snake.getHeadX() == apple.getAppleX() && snake.getHeadY() == apple.getAppleY()) {
+                        apple.setIsEaten(true);
+                        snake.setBodyParts(snake.getBodyParts() + 1);
+                    }
                     apple.checkApple();
                     snake.checkCollisions();
                     gc.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);

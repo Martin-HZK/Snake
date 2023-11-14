@@ -91,11 +91,21 @@ public class Snake {
      * Getter for running
      * @return
      */
+
 //    public BooleanProperty runningProperty() {
 //        return running;
 //    }
     public boolean isRunning() {
         return running;
+    }
+
+
+    public int getHeadX() {
+        return x[0];
+    }
+
+    public int getHeadY() {
+        return y[0];
     }
 
 
