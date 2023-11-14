@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
 <?import javafx.scene.canvas.Canvas?>
-<BorderPane fx:id="playingScene"
-            xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.t.snakeGame.controller.PlayingController"
-            prefHeight="750" prefWidth="1300">
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="gameScene" prefHeight="750" prefWidth="1300" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.t.snakeGame.controller.PlayingController" >
+
     <center>
-        <Canvas fx:id="canvas" width="1300" height="750" />
+        <Canvas fx:id="playingCanvas" height="750" width="1300"  />
 
     </center>
 

@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class Main extends Application {
 
-    private static Scene scene;
+    public static Scene scene;
 
     static final int SCREEN_WIDTH = 1300;
     static final int SCREEN_HEIGHT = 750;

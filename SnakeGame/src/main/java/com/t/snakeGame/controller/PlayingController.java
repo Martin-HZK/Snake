@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -27,13 +28,14 @@ public class PlayingController {
     int count = 0;
     static final int DELAY = 10;
     @FXML
-    Canvas playingCanvas  = new Canvas(SCREEN_WIDTH, SCREEN_HEIGHT);
+    private Canvas playingCanvas; //  = new Canvas(SCREEN_WIDTH, SCREEN_HEIGHT);
     @FXML
-    BorderPane playingScene;
+    private BorderPane gameScene;
     @FXML
     public void initialize() {
+        gameScene.setFocusTraversable(true);
         snake = new Snake();
-        apple = new Apple(10,10); // we just initialize like this
+        apple = new Apple(50, 50); // we just initialize like this
 
         GraphicsContext gc = playingCanvas.getGraphicsContext2D();
         gc.setFill(Color.BLACK);
@@ -71,19 +73,40 @@ public class PlayingController {
         }
         };
         timer.start();
+        Main.scene.setOnKeyPressed(e -> {
+                    switch ((e.getCode())) {
+                        case LEFT:
+                            if(snake.getDirection() != 'R') {
+                                snake.setDirection('L');
+                            }
+                            break;
+                        case RIGHT:
+                            if(snake.getDirection()  != 'L') {
+                                snake.setDirection('R');
+                            }
+                            break;
+                        case UP:
+                            if(snake.getDirection() != 'D') {
+                                snake.setDirection('U');
+                            }
+                            break;
+                        case DOWN:
+                            if(snake.getDirection() != 'U') {
+                                snake.setDirection('D');
+                            }
+                            break;
+                    }
+                }
+        );
 
-        playingScene.setOnKeyPressed(e -> {
-        switch ((e.getCode())) {
-            case LEFT:
-                if(snake.getDirection() != 'R') {
-                    snake.setDirection('L');
-                }
-                break;
-            case RIGHT:
-                if(snake.getDirection() != 'L') {
-                    snake.setDirection('R');
-                }
-                break;
+
+//        playingCanvas.setFocusTraversable(false);
+//        gameScene.requestFocus();
+
+    }
+    @FXML
+    public void handleKeyPress(KeyEvent keyEvent) {
+        switch (keyEvent.getCode()) {
             case UP:
                 if(snake.getDirection() != 'D') {
                     snake.setDirection('U');
@@ -94,9 +117,17 @@ public class PlayingController {
                     snake.setDirection('D');
                 }
                 break;
+            case LEFT:
+                if(snake.getDirection() != 'R') {
+                    snake.setDirection('L');
+                }
+                break;
+            case RIGHT:
+                if(snake.getDirection() != 'L') {
+                    snake.setDirection('R');
+                }
+                break;
         }
-    });
-
     }
 
     public void draw(GraphicsContext g) {
@@ -107,11 +138,11 @@ public class PlayingController {
             for(int i = 0; i< snake.getBodyParts();i++) {
                 if(i == 0) {
                     g.setFill(Color.GREEN);
-                    g.fillRect(snake.getX()[i].get(), snake.getY()[i].get(), UNIT_SIZE, UNIT_SIZE); // ugly coding!!!!!
+                    g.fillRect(snake.getX()[i], snake.getY()[i], UNIT_SIZE, UNIT_SIZE); // ugly coding!!!!!
                 }
                 else {
                     g.setFill(new Color(45.0/255,180.0/255,0,  1.0));
-                    g.fillRect(snake.getX()[i].get(), snake.getY()[i].get(), UNIT_SIZE, UNIT_SIZE);
+                    g.fillRect(snake.getX()[i], snake.getY()[i], UNIT_SIZE, UNIT_SIZE);
                 }
             }
             g.setFill(Color.RED);
@@ -123,20 +154,12 @@ public class PlayingController {
         }
     }
 
-
-
-//
-
         public void gameOver(GraphicsContext g) {
-        //Score
         g.setFill(Color.RED);
         g.setFont(Font.font("Ink Free", FontWeight.BOLD, 40));// Font.font("Ink Free", FontWeight.BOLD, 40)
-//		FontMetrics metrics1 = g.getFontMetrics();
         g.fillText("Score: "+this.apple.getApplesEaten(), (SCREEN_WIDTH - ("Score: "+this.apple.getApplesEaten()).length() * 10)/2, g.getFont().getSize());
-        //Game Over text
         g.setFill(Color.RED);
         g.setFont(Font.font("Ink Free",FontWeight.BOLD, 75));
-//		FontMetrics metrics2 = g.getFontMetrics();
         g.fillText("Game Over lol get rekt", (SCREEN_WIDTH - ("Game Over lol get rekt").length()*35)/2, SCREEN_HEIGHT/2);
     }
 

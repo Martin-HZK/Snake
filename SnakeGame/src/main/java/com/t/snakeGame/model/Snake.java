@@ -16,8 +16,8 @@ public class Snake {
 //    static final int GAME_UNITS = (SCREEN_WIDTH*SCREEN_HEIGHT)/(UNIT_SIZE*UNIT_SIZE);
 
 
-    private final IntegerProperty x[] = new IntegerProperty[GAME_UNITS];
-    private final IntegerProperty y[] = new IntegerProperty[GAME_UNITS];
+    private final int x[] = new int[GAME_UNITS];
+    private final int y[] = new int[GAME_UNITS];
 
 
 
@@ -76,14 +76,14 @@ public class Snake {
      * Getter for x
      * @return
      */
-    public IntegerProperty[] getX() {
+    public int[] getX() {
         return x;
     }
     /**
      * Getter for y
      * @return
      */
-    public IntegerProperty[] getY() {
+    public int[] getY() {
         return y;
     }
 
@@ -103,24 +103,24 @@ public class Snake {
     public void checkCollisions() {
         //checks if head collides with body
         for(int i = bodyParts;i>0;i--) {
-            if((x[0].get() == x[i].get())&& (y[0].get() == y[i].get())) {
+            if((x[0] == x[i]) && (y[0] == y[i])) {
                 this.running = false;
             }
         }
         //check if head touches left border
-        if(x[0].get() < 0) {
+        if(x[0] < 0) {
             this.running = false;
         }
         //check if head touches right border
-        if(x[0].get() > SCREEN_WIDTH) {
+        if(x[0] > SCREEN_WIDTH) {
             this.running = false;
         }
         //check if head touches top border
-        if(y[0].get() < 0) {
+        if(y[0] < 0) {
             this.running = false;
         }
         //check if head touches bottom border
-        if(y[0].get() > SCREEN_HEIGHT) {
+        if(y[0] > SCREEN_HEIGHT) {
             this.running = false;
         }
 
@@ -138,16 +138,16 @@ public class Snake {
 
         switch(direction) {
             case 'U':
-                y[0].set(y[0].get() - UNIT_SIZE);
+                y[0] = y[0] - UNIT_SIZE;
                 break;
             case 'D':
-                y[0].set(y[0].get() + UNIT_SIZE);
+                y[0] = y[0] + UNIT_SIZE;
                 break;
             case 'L':
-                x[0].set(x[0].get() - UNIT_SIZE);
+                x[0] = x[0] - UNIT_SIZE;
                 break;
             case 'R':
-                x[0].set(x[0].get() + UNIT_SIZE);
+                x[0] = x[0] + UNIT_SIZE;
                 break;
         }
 
