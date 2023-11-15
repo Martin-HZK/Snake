@@ -1,0 +1,4 @@
+--patch-module
+com.t.snakeGame=_
+--add-reads
+com.t.snakeGame=ALL-UNNAMED

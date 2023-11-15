@@ -4,6 +4,7 @@ import com.t.snakeGame.Main;
 import com.t.snakeGame.model.Apple;
 import com.t.snakeGame.model.Snake;
 import javafx.animation.AnimationTimer;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -14,6 +15,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -106,11 +108,6 @@ public class PlayingController {
                     }
                 }
         );
-
-
-//        playingCanvas.setFocusTraversable(false);
-//        gameScene.requestFocus();
-
     }
     @FXML
     public void handleKeyPress(KeyEvent keyEvent) {
@@ -162,13 +159,25 @@ public class PlayingController {
         }
     }
 
-        public void gameOver(GraphicsContext g) {
+    public void switchToScore() throws IOException {
+        Main.setRoot("/com.t.snakeGame/view/scoreView");
+    }
+    public void gameOver(GraphicsContext g) {
         g.setFill(Color.RED);
         g.setFont(Font.font("Ink Free", FontWeight.BOLD, 40));// Font.font("Ink Free", FontWeight.BOLD, 40)
         g.fillText("Score: "+this.apple.getApplesEaten(), (SCREEN_WIDTH - ("Score: "+this.apple.getApplesEaten()).length() * 10)/2, g.getFont().getSize());
         g.setFill(Color.RED);
         g.setFont(Font.font("Ink Free",FontWeight.BOLD, 75));
         g.fillText("Game Over lol get rekt", (SCREEN_WIDTH - ("Game Over lol get rekt").length()*35)/2, SCREEN_HEIGHT/2);
+        PauseTransition pause = new PauseTransition(Duration.seconds(10)); // 3秒的暂停时间
+        pause.setOnFinished(event -> {
+            try {
+                switchToScore();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        pause.play();
     }
 
 

@@ -25,7 +25,6 @@ public class PlayingView extends BorderPane {
     public PlayingView(Apple newApple, Snake newSnake) throws Exception{
         apple = newApple;
         snake = newSnake;
-//        controller = newController;
 
         StackPane stackPane = new StackPane();
 
