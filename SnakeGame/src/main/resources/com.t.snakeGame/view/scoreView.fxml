@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="750" prefWidth="1300" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.t.snakeGame.controller.ScoreController">
    <children>
-      <HBox alignment="CENTER" layoutX="119.0" layoutY="101.0" prefHeight="196.0" prefWidth="408.0">
+      <HBox alignment="CENTER_LEFT" layoutX="119.0" layoutY="101.0" prefHeight="196.0" prefWidth="755.0">
          <children>
-            <Label text="Your Score is" textFill="#fc310d">
+            <Label text="Your Score is " textFill="#fc310d">
+               <font>
+                  <Font size="40.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="totalScore" textFill="#fc310d">
                <font>
                   <Font size="40.0" />
                </font>

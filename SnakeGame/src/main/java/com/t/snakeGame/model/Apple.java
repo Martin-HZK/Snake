@@ -23,7 +23,7 @@ public class Apple {
 
 
 
-    private IntegerProperty applesEaten = new SimpleIntegerProperty(0);
+    public IntegerProperty applesEaten = new SimpleIntegerProperty(0);
 
     /**
      * Constructor for Apple class

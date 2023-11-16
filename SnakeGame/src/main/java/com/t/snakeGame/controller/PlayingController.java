@@ -7,6 +7,8 @@ import javafx.animation.AnimationTimer;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -22,8 +24,6 @@ import java.io.IOException;
 import static com.t.snakeGame.view.PlayingView.*;
 
 public class PlayingController {
-//    static final int SCREEN_WIDTH = 1300;
-//    static final int SCREEN_HEIGHT = 750;
     private Snake snake;
     private Apple apple;
     AnimationTimer timer;
@@ -37,8 +37,8 @@ public class PlayingController {
     public void initialize() {
         gameScene.setFocusTraversable(true);
         snake = new Snake();
-        apple = new Apple(50, 50); // we just initialize like this
-
+        apple = new Apple(200, 200); // we just initialize like this
+        ScoreController.playingScore.bind(apple.applesEaten);
         GraphicsContext gc = playingCanvas.getGraphicsContext2D();
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -160,8 +160,12 @@ public class PlayingController {
     }
 
     public void switchToScore() throws IOException {
+        System.out.println("in playing the score is: " + apple.getApplesEaten());
         Main.setRoot("/com.t.snakeGame/view/scoreView");
+//        this.setReceivedData(apple.getApplesEaten());
     }
+
+
     public void gameOver(GraphicsContext g) {
         g.setFill(Color.RED);
         g.setFont(Font.font("Ink Free", FontWeight.BOLD, 40));// Font.font("Ink Free", FontWeight.BOLD, 40)
@@ -169,7 +173,7 @@ public class PlayingController {
         g.setFill(Color.RED);
         g.setFont(Font.font("Ink Free",FontWeight.BOLD, 75));
         g.fillText("Game Over lol get rekt", (SCREEN_WIDTH - ("Game Over lol get rekt").length()*35)/2, SCREEN_HEIGHT/2);
-        PauseTransition pause = new PauseTransition(Duration.seconds(10)); // 3秒的暂停时间
+        PauseTransition pause = new PauseTransition(Duration.seconds(3)); // 3 seconds
         pause.setOnFinished(event -> {
             try {
                 switchToScore();

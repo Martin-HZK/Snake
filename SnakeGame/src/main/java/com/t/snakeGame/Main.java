@@ -1,5 +1,6 @@
 package com.t.snakeGame;
 
+import com.t.snakeGame.controller.ScoreController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -37,5 +38,21 @@ public class Main extends Application {
     public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
+//    public static void setScoreRoot(String fxml, boolean isScoreWindow, int score) throws IOException {
+//        if (isScoreWindow) {
+//            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml + ".fxml"));
+//            Parent root = fxmlLoader.load();
+//            ScoreController scoreController = fxmlLoader.getController();
+//            scoreController.setReceivedData(score);
+//            scene.setRoot(root);
+////            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml + ".fxml"));
+////            ScoreController scoreController = fxmlLoader.getController();
+////            scoreController.setReceivedData(score);
+//        }else{
+////            scene.setRoot(loadFXML(fxml));
+//        }
+////        scene.setRoot(loadFXML(fxml));
+//    }
+
 
 }
