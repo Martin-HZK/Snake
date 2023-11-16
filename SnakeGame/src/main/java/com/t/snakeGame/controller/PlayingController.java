@@ -5,14 +5,9 @@ import com.t.snakeGame.model.Apple;
 import com.t.snakeGame.model.Snake;
 import javafx.animation.AnimationTimer;
 import javafx.animation.PauseTransition;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -20,6 +15,7 @@ import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import static com.t.snakeGame.view.PlayingView.*;
 
@@ -109,31 +105,6 @@ public class PlayingController {
                 }
         );
     }
-    @FXML
-    public void handleKeyPress(KeyEvent keyEvent) {
-        switch (keyEvent.getCode()) {
-            case UP:
-                if(snake.getDirection() != 'D') {
-                    snake.setDirection('U');
-                }
-                break;
-            case DOWN:
-                if(snake.getDirection() != 'U') {
-                    snake.setDirection('D');
-                }
-                break;
-            case LEFT:
-                if(snake.getDirection() != 'R') {
-                    snake.setDirection('L');
-                }
-                break;
-            case RIGHT:
-                if(snake.getDirection() != 'L') {
-                    snake.setDirection('R');
-                }
-                break;
-        }
-    }
 
     public void draw(GraphicsContext g) {
         if(snake.isRunning()) { // do we need to change the name of the method
@@ -156,6 +127,7 @@ public class PlayingController {
         }
         else {
             gameOver(g);
+            timer.stop();
         }
     }
 
@@ -174,14 +146,17 @@ public class PlayingController {
         g.setFont(Font.font("Ink Free",FontWeight.BOLD, 75));
         g.fillText("Game Over lol get rekt", (SCREEN_WIDTH - ("Game Over lol get rekt").length()*35)/2, SCREEN_HEIGHT/2);
         PauseTransition pause = new PauseTransition(Duration.seconds(3)); // 3 seconds
+
         pause.setOnFinished(event -> {
-            try {
-                switchToScore();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+                try {
+                    switchToScore();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
         });
         pause.play();
+
+
     }
 
 
