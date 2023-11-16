@@ -4,9 +4,7 @@ import com.t.snakeGame.Main;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -20,12 +18,31 @@ public class ScoreController {
     @FXML
     private Label totalScore;
     @FXML
+    private Label playerLevel;
+    @FXML
     public void initialize() {
         totalScore.setText(playingScore.get()+ "");
-//        if (playingScore.get() < 5) {
-//            Image rookie = new Image(getClass().getResourceAsStream("/com.t.snakeGame/image/Rookie.png"));
-//            snakeLevel.setImage(rookie);
-//        }
+        try {
+            if (playingScore.get() < 2) { // we set 5
+                Image rookie = new Image(getClass().getResourceAsStream("/images/Rookie.jpg"));
+                snakeLevel.setImage(rookie);
+                playerLevel.setText("Novice Snake");
+            } else if (playingScore.get() < 5) { // we set 20
+                Image skilled = new Image(getClass().getResourceAsStream("/images/Skilled.jpg"));
+                snakeLevel.setImage(skilled);
+                playerLevel.setText("Skilled Serpent");
+            } else if (playingScore.get() < 7) { // we set 30
+                Image skilled = new Image(getClass().getResourceAsStream("/images/Expert.jpg"));
+                snakeLevel.setImage(skilled);
+                playerLevel.setText("Expert Python");
+            } else {
+                Image skilled = new Image(getClass().getResourceAsStream("/images/Master.jpg"));
+                snakeLevel.setImage(skilled);
+                playerLevel.setText("Master Viper");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 

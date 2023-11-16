@@ -12,7 +12,7 @@
 <AnchorPane prefHeight="750" prefWidth="1300" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.t.snakeGame.controller.ScoreController">
    <children>
       <Button layoutX="1106.0" layoutY="612.0" mnemonicParsing="false" onAction="#switchOnRestartClick" text="Restart" />
-      <VBox alignment="CENTER" layoutX="116.0" layoutY="141.0" prefHeight="504.0" prefWidth="396.0">
+      <VBox alignment="CENTER" layoutX="116.0" layoutY="141.0" prefHeight="547.0" prefWidth="396.0">
          <children>
             <HBox alignment="CENTER" prefHeight="196.0" prefWidth="314.0">
                <children>
@@ -32,6 +32,23 @@
                </children>
             </HBox>
             <ImageView fx:id="snakeLevel" fitHeight="275.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" />
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="261.0">
+               <children>
+                  <Label text="Level:" textFill="#fc310d">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" right="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="playerLevel" textFill="#fc310d">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
          </children>
       </VBox>
    </children>
