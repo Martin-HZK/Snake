@@ -26,7 +26,7 @@ public class PlayingController {
     int count = 0;
     static final int DELAY = 10;
     @FXML
-    private Canvas playingCanvas; //  = new Canvas(SCREEN_WIDTH, SCREEN_HEIGHT);
+    private Canvas playingCanvas;
     @FXML
     private BorderPane gameScene;
     @FXML
