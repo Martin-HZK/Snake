@@ -51,7 +51,7 @@
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Label>
-            <ColorPicker fx:id="themeColor" prefHeight="23.0" prefWidth="107.0">
+            <ColorPicker fx:id="textColor" prefHeight="23.0" prefWidth="107.0">
                <value>
                   <Color red="0.5723684430122375" green="0.3405062258243561" blue="0.3405062258243561" />
                </value>
