@@ -42,6 +42,7 @@ public class PlayingController {
         gc.setFill(Color.RED);
         gc.fillOval(apple.getAppleX(), apple.getAppleY(), UNIT_SIZE, UNIT_SIZE);
 
+
         timer = new AnimationTimer() {
         @Override
         public void handle(long l) {

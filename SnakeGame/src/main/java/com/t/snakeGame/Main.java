@@ -26,6 +26,7 @@ public class Main extends Application {
         Parent root = loader.load();
 
         scene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
+        scene.getStylesheets().add(getClass().getResource("/style.css").toString());
         stage.setTitle("Snake");
         stage.setScene(scene);
         stage.show();

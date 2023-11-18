@@ -7,14 +7,16 @@ import javafx.beans.property.SimpleIntegerProperty;
 
 import java.util.Random;
 
+import static com.t.snakeGame.view.PlayingView.*;
+
 public class Apple {
 
     IntegerProperty appleX;
     IntegerProperty appleY;
     Random random = new Random();
-    static final int SCREEN_WIDTH = 1300;
-    static final int SCREEN_HEIGHT = 750;
-    static final int UNIT_SIZE = 50;
+//    static final int SCREEN_WIDTH = 1300;
+//    static final int SCREEN_HEIGHT = 750;
+//    static final int UNIT_SIZE = 50;
 
 
 
