@@ -10,12 +10,15 @@
 <!--        static final int SCREEN_WIDTH = 1300;-->
 <!--        static final int SCREEN_HEIGHT = 750;-->
 
-<AnchorPane prefHeight="750" prefWidth="1300" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.t.snakeGame.controller.MainController">
+<AnchorPane prefHeight="750" prefWidth="1300" style="-fx-background-color: Black;-fx-text-fill: #fc310d" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.t.snakeGame.controller.MainController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="494.0" layoutY="235.0" text="Snake" textFill="#fc310d">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="494.0" layoutY="235.0" text="Snake">
          <font>
             <Font size="96.0" />
          </font>
+         <style>
+            -fx-text-fill: inherit;
+         </style>
       </Label>
       <HBox alignment="CENTER" layoutX="319.0" layoutY="525.0" prefHeight="78.0" prefWidth="675.0">
          <children>

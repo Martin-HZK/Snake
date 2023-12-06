@@ -3,6 +3,7 @@ package com.t.snakeGame.controller;
 import com.t.snakeGame.Main;
 import com.t.snakeGame.model.Apple;
 import com.t.snakeGame.model.Snake;
+import com.t.snakeGame.view.PlayingView;
 import javafx.animation.AnimationTimer;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
@@ -108,17 +109,19 @@ public class PlayingController {
     }
 
     public void draw(GraphicsContext g) {
+        Color snakeColor = Color.valueOf(PlayingView.getSnakeColor());
         if(snake.isRunning()) { // do we need to change the name of the method
             g.setFill(Color.RED);
             g.fillOval(apple.getAppleX(), apple.getAppleY(), UNIT_SIZE, UNIT_SIZE);
 
             for(int i = 0; i< snake.getBodyParts();i++) {
                 if(i == 0) {
-                    g.setFill(Color.GREEN);
+                    g.setFill(snakeColor);
                     g.fillRect(snake.getX()[i], snake.getY()[i], UNIT_SIZE, UNIT_SIZE); // ugly coding!!!!!
                 }
                 else {
-                    g.setFill(new Color(45.0/255,180.0/255,0,  1.0));
+//                    g.setFill(new Color(45.0/255,180.0/255,0,  1.0));
+                    g.setFill(snakeColor.deriveColor(0, 1, 1, 0.5));
                     g.fillRect(snake.getX()[i], snake.getY()[i], UNIT_SIZE, UNIT_SIZE);
                 }
             }

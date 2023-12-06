@@ -2,6 +2,7 @@ package com.t.snakeGame.controller;
 
 import com.t.snakeGame.model.Snake;
 import com.t.snakeGame.view.OptionView;
+import com.t.snakeGame.view.PlayingView;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -39,43 +40,25 @@ public class OptionController {
                 String newColor = toHex(newValue.toString());
                 System.out.println(newColor);
 
-
-                Main.getRoot().setStyle("-fx-text-fill: " + newColor + ";"+ "-fx-background-color: #000000;");
-
-
+                Main.cssStyle = "-fx-text-fill: " + newColor + ";"+ "-fx-background-color: #000000;"; // do we need getter and setter?
+                Main.getRoot().setStyle(Main.cssStyle);
 
 
-//                Platform.runLater(() -> {
-//                    Main.scene.getStylesheets().clear();
-//                    try {
-//                        if (cssAdd) {
-//                            updateDynamicStyle(newColor);
-//                            Main.scene.getStylesheets().add("/dynamicStyle.css");
-//                        } else {
-//                            String css = readCSSFile("src/main/resources/style.css");
-//                            css = updateCSSColor(css, ".label", "-fx-text-fill", newColor);
-//                            writeCSSFile("src/main/resources/style.css", css);
-//                            Main.scene.getStylesheets().add("/style.css");
-//                        }
-//                        cssAdd = !cssAdd;
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
 
-//                });
-//                Main.scene.getStylesheets().clear();
-//                if (cssAdd) {
-//                    updateDynamicStyle(newColor);
-//                    Main.scene.getStylesheets().add("/dynamicStyle.css");
-//                }
-//                else {
-//                String css = readCSSFile("src/main/resources/style.css");
-//
-//                css = updateCSSColor(css, ".label", "-fx-text-fill", newColor);
-//                writeCSSFile("src/main/resources/style.css", css);
-//                    Main.scene.getStylesheets().add("/style.css");
-//                }
-//                cssAdd = !cssAdd;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        });
+
+        snakeColor.valueProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                System.out.println(newValue.toString());
+                String newColor = toHex(newValue.toString());
+                System.out.println(newColor);
+
+                PlayingView.setSnakeColor(newColor);
+
 
             } catch (Exception e) {
                 e.printStackTrace();

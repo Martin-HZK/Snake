@@ -17,6 +17,16 @@ import javafx.stage.Stage;
 public class PlayingView extends BorderPane {
     private Apple apple;
     private Snake snake;
+
+    public static String getSnakeColor() {
+        return snakeColor;
+    }
+
+    public static void setSnakeColor(String snakeColor) {
+        PlayingView.snakeColor = snakeColor;
+    }
+
+    private static String snakeColor = "#00FF00";
 //    private MainController controller;
     private Stage playingStage;
     private static Scene mainScene;

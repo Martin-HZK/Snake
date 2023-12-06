@@ -2,6 +2,7 @@ package com.t.snakeGame;
 
 import com.t.snakeGame.controller.ScoreController;
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,6 +13,7 @@ import java.io.IOException;
 public class Main extends Application {
 
     public static Scene scene;
+    public static String cssStyle = "-fx-text-fill: #fc310d;-fx-background-color: #000000";
 
     static final int SCREEN_WIDTH = 1300;
     static final int SCREEN_HEIGHT = 750;
@@ -24,7 +26,7 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/com.t.snakeGame/startMain.fxml"));
         Parent root = loader.load();
-        root.setStyle("-fx-text-fill: #fc310d;"+"-fx-background-color: #000000");
+        root.setStyle(cssStyle);
         scene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
 //        scene.getStylesheets().add("/style.css");
         stage.setTitle("Snake");
@@ -37,7 +39,10 @@ public class Main extends Application {
         return fxmlLoader.load();
     }
     public static void setRoot(String fxml) throws IOException {
+//        String cssStyle = scene.getRoot().getStyle();
+//        System.out.println(cssStyle);
         scene.setRoot(loadFXML(fxml));
+        scene.getRoot().setStyle(cssStyle);
     }
     public static Scene getScene() {
         return scene;
