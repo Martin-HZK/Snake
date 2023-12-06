@@ -24,9 +24,9 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/com.t.snakeGame/startMain.fxml"));
         Parent root = loader.load();
-
+        root.setStyle("-fx-text-fill: #fc310d;"+"-fx-background-color: #000000");
         scene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
-        scene.getStylesheets().add("/style.css");
+//        scene.getStylesheets().add("/style.css");
         stage.setTitle("Snake");
         stage.setScene(scene);
         stage.show();
@@ -38,5 +38,11 @@ public class Main extends Application {
     }
     public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
+    }
+    public static Scene getScene() {
+        return scene;
+    }
+    public static Parent getRoot() {
+        return scene.getRoot();
     }
 }

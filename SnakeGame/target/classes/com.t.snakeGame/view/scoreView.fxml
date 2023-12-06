@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750" prefWidth="1300" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.t.snakeGame.controller.ScoreController">
+<AnchorPane prefHeight="750" prefWidth="1300" style="-fx-background-color: black;-fx-text-fill: #fc310d" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.t.snakeGame.controller.ScoreController">
    <children>
       <Button layoutX="1106.0" layoutY="612.0" mnemonicParsing="false" onAction="#switchOnRestartClick" text="Restart" />
       <VBox alignment="CENTER" layoutX="116.0" layoutY="141.0" prefHeight="547.0" prefWidth="396.0">
@@ -20,6 +20,9 @@
                      <font>
                         <Font size="40.0" />
                      </font>
+                     <style>
+                        -fx-text-fill: inherit;
+                     </style>
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -38,6 +41,9 @@
                      <font>
                         <Font size="35.0" />
                      </font>
+                     <style>
+                        -fx-text-fill: inherit;
+                     </style>
                      <HBox.margin>
                         <Insets left="20.0" right="10.0" />
                      </HBox.margin>

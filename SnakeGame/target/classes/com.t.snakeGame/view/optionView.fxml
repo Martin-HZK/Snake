@@ -11,20 +11,27 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750" prefWidth="1300" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.t.snakeGame.controller.OptionController">
+<AnchorPane prefHeight="750" prefWidth="1300" style="-fx-background-color: Black;-fx-text-fill: #fc310d" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.t.snakeGame.controller.OptionController">
    <children>
       <HBox alignment="CENTER" layoutX="1035.0" layoutY="592.0" prefHeight="96.0" prefWidth="175.0">
          <children>
             <Button mnemonicParsing="false" onAction="#switchOnBackClick" text="Back" textAlignment="CENTER">
                <font>
                   <Font size="30.0" />
-               </font></Button>
+               </font>
+<!--               <style>-->
+<!--                  -fx-text-fill: inherit;-->
+<!--               </style>-->
+            </Button>
          </children>
       </HBox>
       <Label layoutX="310.0" layoutY="99.0" prefHeight="123.0" prefWidth="711.0" text="Select Your Scene!" textAlignment="CENTER">
          <font>
             <Font size="80.0" />
          </font>
+         <style>
+            -fx-text-fill: inherit;
+         </style>
       </Label>
       <HBox layoutX="420.0" layoutY="280.0" prefHeight="323.0" prefWidth="460.0">
          <children>
@@ -34,6 +41,9 @@
                      <font>
                         <Font size="20.0" />
                      </font>
+                     <style>
+                        -fx-text-fill: inherit;
+                     </style>
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
@@ -50,6 +60,9 @@
                      <font>
                         <Font size="20.0" />
                      </font>
+                     <style>
+                        -fx-text-fill: inherit;
+                     </style>
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
