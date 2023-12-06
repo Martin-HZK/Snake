@@ -2,6 +2,8 @@ package com.t.snakeGame.controller;
 
 import com.t.snakeGame.model.Snake;
 import com.t.snakeGame.view.OptionView;
+import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import com.t.snakeGame.Main;
 import javafx.fxml.FXML;
@@ -10,6 +12,7 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.paint.Color;
 
 import java.io.*;
+import java.util.Random;
 
 public class OptionController {
 
@@ -20,6 +23,7 @@ public class OptionController {
     @FXML
     private Canvas snakeCanvas;
 
+    private boolean cssAdd = true; // false- add style.css, true- add dynamicStyle.css
     public void switchOnBackClick(ActionEvent actionEvent) throws IOException {
         Main.setRoot("/com.t.snakeGame/startMain");
     }
@@ -28,23 +32,59 @@ public class OptionController {
     public void initialize() {
         textColor.valueProperty().addListener((observable, oldValue, newValue) -> {
             try {
-                String css = readCSSFile("src/main/resources/style.css");
                 System.out.println(newValue.toString());
                 String newColor = toHex(newValue.toString());
                 System.out.println(newColor);
                 System.out.println(newValue.toString());
 
-                css = updateCSSColor(css, ".label", "-fx-text-fill", newColor);
-                writeCSSFile("src/main/resources/style.css", css);
 //                Main.scene.getStylesheets().clear();
-//                Main.scene.getStylesheets().add(getClass().getResource("/style.css").toString());
-                Main.scene.getRoot().applyCss();
-                Main.scene.getRoot().layout();
-            } catch (IOException e) {
+//                Main.scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+                Platform.runLater(() -> {
+                    Main.scene.getStylesheets().clear();
+                    try {
+                        if (cssAdd) {
+                            updateDynamicStyle(newColor);
+                            Main.scene.getStylesheets().add("/dynamicStyle.css");
+                        } else {
+                            String css = readCSSFile("src/main/resources/style.css");
+                            css = updateCSSColor(css, ".label", "-fx-text-fill", newColor);
+                            writeCSSFile("src/main/resources/style.css", css);
+                            Main.scene.getStylesheets().add("/style.css");
+                        }
+                        cssAdd = !cssAdd;
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                });
+//                Main.scene.getStylesheets().clear();
+//                if (cssAdd) {
+//                    updateDynamicStyle(newColor);
+//                    Main.scene.getStylesheets().add("/dynamicStyle.css");
+//                }
+//                else {
+//                String css = readCSSFile("src/main/resources/style.css");
+//
+//                css = updateCSSColor(css, ".label", "-fx-text-fill", newColor);
+//                writeCSSFile("src/main/resources/style.css", css);
+//                    Main.scene.getStylesheets().add("/style.css");
+//                }
+//                cssAdd = !cssAdd;
+
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
         });
+    }
+    private void updateDynamicStyle(String newColor) throws IOException{
+        try {
+            String dynamicCSS = readCSSFile("src/main/resources/dynamicStyle.css");
+            dynamicCSS = updateCSSColor(dynamicCSS, ".label", "-fx-text-fill", newColor);
+            writeCSSFile("src/main/resources/dynamicStyle.css", dynamicCSS);
+       } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public String toHex(String argb) {

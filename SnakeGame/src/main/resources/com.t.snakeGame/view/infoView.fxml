@@ -22,7 +22,7 @@
       </HBox>
       <StackPane layoutX="470.0" layoutY="108.0" prefHeight="123.0" prefWidth="307.0">
          <children>
-            <Label prefWidth="543.0" text="About" textFill="#fc310d">
+            <Label prefWidth="543.0" text="About" >
                <font>
                   <Font size="96.0" />
                </font>

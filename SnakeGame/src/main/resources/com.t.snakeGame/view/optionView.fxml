@@ -21,7 +21,7 @@
                </font></Button>
          </children>
       </HBox>
-      <Label layoutX="310.0" layoutY="99.0" prefHeight="123.0" prefWidth="711.0" text="Select Your Scene!" textAlignment="CENTER" textFill="#fc310d">
+      <Label layoutX="310.0" layoutY="99.0" prefHeight="123.0" prefWidth="711.0" text="Select Your Scene!" textAlignment="CENTER">
          <font>
             <Font size="80.0" />
          </font>
@@ -30,7 +30,7 @@
          <children>
             <VBox alignment="CENTER" prefHeight="304.0" prefWidth="168.0">
                <children>
-                  <Label text="Snake" textFill="#fc310d">
+                  <Label text="Snake" >
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -46,7 +46,7 @@
                         <Insets bottom="150.0" />
                      </VBox.margin>
                   </ColorPicker>
-                  <Label text="Theme" textFill="#fc310d">
+                  <Label text="Theme">
                      <font>
                         <Font size="20.0" />
                      </font>

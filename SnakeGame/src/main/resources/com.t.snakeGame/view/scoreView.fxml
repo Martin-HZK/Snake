@@ -16,7 +16,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="196.0" prefWidth="314.0">
                <children>
-                  <Label text="Your Score is " textFill="#fc310d">
+                  <Label text="Your Score is " >
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -34,7 +34,7 @@
             <ImageView fx:id="snakeLevel" fitHeight="275.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" />
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="261.0">
                <children>
-                  <Label text="Level:" textFill="#fc310d">
+                  <Label text="Level:" >
                      <font>
                         <Font size="35.0" />
                      </font>
@@ -42,7 +42,7 @@
                         <Insets left="20.0" right="10.0" />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="playerLevel" textFill="#fc310d">
+                  <Label fx:id="playerLevel" >
                      <font>
                         <Font size="35.0" />
                      </font>
