@@ -116,12 +116,12 @@ public class PlayingController {
 
             for(int i = 0; i< snake.getBodyParts();i++) {
                 if(i == 0) {
-                    g.setFill(snakeColor);
+                    g.setFill(snakeColor.deriveColor(1, 1, 1, 0.5));
                     g.fillRect(snake.getX()[i], snake.getY()[i], UNIT_SIZE, UNIT_SIZE); // ugly coding!!!!!
                 }
                 else {
 //                    g.setFill(new Color(45.0/255,180.0/255,0,  1.0));
-                    g.setFill(snakeColor.deriveColor(0, 1, 1, 0.5));
+                    g.setFill(snakeColor);
                     g.fillRect(snake.getX()[i], snake.getY()[i], UNIT_SIZE, UNIT_SIZE);
                 }
             }
