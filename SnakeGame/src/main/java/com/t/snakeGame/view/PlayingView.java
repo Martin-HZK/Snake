@@ -19,6 +19,7 @@ public class PlayingView extends BorderPane {
     private Snake snake;
 
     public static String getSnakeColor() {
+        System.out.println(snakeColor);
         return snakeColor;
     }
 
@@ -26,7 +27,7 @@ public class PlayingView extends BorderPane {
         PlayingView.snakeColor = snakeColor;
     }
 
-    private static String snakeColor = "#00FF00";
+    private static String snakeColor = "0x00FF00FF";
 //    private MainController controller;
     private Stage playingStage;
     private static Scene mainScene;

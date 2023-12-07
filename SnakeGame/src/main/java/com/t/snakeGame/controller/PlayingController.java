@@ -16,7 +16,6 @@ import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import static com.t.snakeGame.view.PlayingView.*;
 
@@ -110,18 +109,29 @@ public class PlayingController {
 
     public void draw(GraphicsContext g) {
         Color snakeColor = Color.valueOf(PlayingView.getSnakeColor());
+        Color snakeTail;
+        if (snakeColor == Color.GREEN) {
+            snakeTail = new Color(45.0/255, 180.0/255, 0, 1.0);
+        } else if (snakeColor == Color.RED) {
+            snakeTail = new Color(180.0/255, 0, 45/255, 1.0);
+        } else if (snakeColor == Color.BLUE) {
+            snakeTail = new Color(0, 45/255, 180.0/255, 1.0);
+        } else {
+            snakeTail = snakeColor.darker();
+        }
         if(snake.isRunning()) { // do we need to change the name of the method
             g.setFill(Color.RED);
             g.fillOval(apple.getAppleX(), apple.getAppleY(), UNIT_SIZE, UNIT_SIZE);
 
             for(int i = 0; i< snake.getBodyParts();i++) {
                 if(i == 0) {
-                    g.setFill(snakeColor.deriveColor(1, 1, 1, 0.5));
+                    g.setFill(snakeColor);
+
                     g.fillRect(snake.getX()[i], snake.getY()[i], UNIT_SIZE, UNIT_SIZE); // ugly coding!!!!!
                 }
                 else {
-//                    g.setFill(new Color(45.0/255,180.0/255,0,  1.0));
-                    g.setFill(snakeColor);
+
+                    g.setFill(snakeTail);
                     g.fillRect(snake.getX()[i], snake.getY()[i], UNIT_SIZE, UNIT_SIZE);
                 }
             }
@@ -134,6 +144,7 @@ public class PlayingController {
             timer.stop();
         }
     }
+
 
     public void switchToScore() throws IOException {
         System.out.println("in playing the score is: " + apple.getApplesEaten());
