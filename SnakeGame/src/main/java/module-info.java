@@ -12,6 +12,7 @@
 module com.t.snakeGame {
     requires javafx.controls;
     requires javafx.fxml;
+    requires com.google.gson;
 
     opens com.t.snakeGame.controller to javafx.fxml;
     opens com.t.snakeGame to javafx.fxml;

@@ -1,14 +1,16 @@
 package com.t.snakeGame;
 
-import com.t.snakeGame.controller.ScoreController;
 import javafx.application.Application;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
-import java.io.IOException;
+import java.io.*;
+import java.util.Map;
 
 public class Main extends Application {
 
@@ -23,6 +25,42 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+//        try {
+//            BufferedReader reader = new BufferedReader(new FileReader("/style.css"));
+//            String line = reader.readLine();
+//            System.out.println(line);
+//            reader.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+        Gson gson = new Gson();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("~/resources/com.t.snakeGame/UserSetting.json"));
+//            BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("resources/com/t/snakeGame/UserSetting.json")));
+
+            JsonObject jsonObject = JsonParser.parseReader(reader).getAsJsonObject();
+            reader.close();
+
+            Map<?, ?> map = gson.fromJson(jsonObject, Map.class);
+            Object value = null;
+            for (Map.Entry<?, ?> entry : map.entrySet()) {
+                if (entry.getKey() == "user_setting_color") {
+                     value = entry.getValue();
+                     break;
+                }
+            }
+            Map<String, String> userSettingColor = (Map<String, String>) value;
+            String bgColor = userSettingColor.get("bgColor");
+            String txtFill = userSettingColor.get("txtFill");
+            System.out.println(bgColor);
+            System.out.println(txtFill);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/com.t.snakeGame/startMain.fxml"));
         Parent root = loader.load();
