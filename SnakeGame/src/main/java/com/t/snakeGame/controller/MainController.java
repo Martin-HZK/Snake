@@ -19,6 +19,8 @@ public class MainController {
 //        snake = s;
 //    }
 
+
+
     public void switchOnInfoClick(ActionEvent actionEvent) throws IOException {
         Main.setRoot("/com.t.snakeGame/view/infoView");
     }

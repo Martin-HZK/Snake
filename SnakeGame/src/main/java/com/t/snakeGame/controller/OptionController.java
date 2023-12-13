@@ -43,6 +43,7 @@ public class OptionController {
                 Main.cssStyle = "-fx-text-fill: " + newColor + ";"+ "-fx-background-color: #000000;"; // do we need getter and setter?
                 Main.getRoot().setStyle(Main.cssStyle);
 
+                Main.saveUserSetting(newColor, "#000000");
 
 
             } catch (Exception e) {
@@ -105,5 +106,7 @@ public class OptionController {
         bufferedWriter.write(cssContent);
         bufferedWriter.close();
     }
+
+
 
 }
