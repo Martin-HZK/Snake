@@ -1,5 +1,6 @@
 package com.t.snakeGame.controller;
 
+import com.google.gson.*;
 import com.t.snakeGame.Main;
 import com.t.snakeGame.model.Apple;
 import com.t.snakeGame.model.Snake;
@@ -15,6 +16,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import static com.t.snakeGame.view.PlayingView.*;
@@ -163,6 +167,7 @@ public class PlayingController {
         PauseTransition pause = new PauseTransition(Duration.seconds(3)); // 3 seconds
 
         pause.setOnFinished(event -> {
+                storeScore(apple.getApplesEaten());
                 try {
                     switchToScore();
                 } catch (IOException e) {
@@ -172,6 +177,31 @@ public class PlayingController {
         pause.play();
 
 
+    }
+
+    public void storeScore(int score) {
+        JsonArray userScores = new JsonArray();
+        JsonObject jsonObject = new JsonObject();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/Score.json"));
+            jsonObject= JsonParser.parseReader(reader).getAsJsonObject();
+            reader.close();
+            userScores = jsonObject.getAsJsonArray("scores");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        JsonObject newScore = new JsonObject();
+        newScore.addProperty("name", Integer.toString(score));
+        userScores.add(newScore);
+        jsonObject.add("scores", userScores);
+        try {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            FileWriter writer = new FileWriter("src/main/resources/Score.json");
+            gson.toJson(jsonObject, writer);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
