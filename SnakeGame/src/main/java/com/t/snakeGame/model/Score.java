@@ -1,28 +1,32 @@
 package com.t.snakeGame.model;
 
 public class Score {
-    private String name;
-    private int score;
+    private String playerName;
 
-    public Score(String name, int score) {
-        this.name = name;
-        this.score = score;
+
+
+    private String playerScore;
+
+
+    public String getPlayerName() {
+        return playerName;
     }
 
-    public String getName() {
-        return name;
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getPlayerScore() {
+        return playerScore;
     }
 
-    public int getScore() {
-        return score;
+    public void setPlayerScore(String playerScore) {
+        this.playerScore = playerScore;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public Score(String playerName, String playerScore) {
+        this.playerName = playerName;
+        this.playerScore = playerScore;
     }
 
 

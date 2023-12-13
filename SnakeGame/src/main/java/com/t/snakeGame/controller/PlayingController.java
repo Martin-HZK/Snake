@@ -151,7 +151,7 @@ public class PlayingController {
 
 
     public void switchToScore() throws IOException {
-        System.out.println("in playing the score is: " + apple.getApplesEaten());
+//        System.out.println("in playing the score is: " + apple.getApplesEaten());
         Main.setRoot("/com.t.snakeGame/view/scoreView");
 //        this.setReceivedData(apple.getApplesEaten());
     }
@@ -191,7 +191,8 @@ public class PlayingController {
             e.printStackTrace();
         }
         JsonObject newScore = new JsonObject();
-        newScore.addProperty("name", Integer.toString(score));
+        newScore.addProperty("name", "Anonymous");
+        newScore.addProperty("score", score);
         userScores.add(newScore);
         jsonObject.add("scores", userScores);
         try {
