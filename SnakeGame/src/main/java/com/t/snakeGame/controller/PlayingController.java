@@ -1,7 +1,7 @@
 package com.t.snakeGame.controller;
 
 import com.t.snakeGame.Main;
-import com.t.snakeGame.model.Apple;
+import com.t.snakeGame.model.RedApple;
 import com.t.snakeGame.model.Snake;
 import com.t.snakeGame.view.PlayingView;
 import javafx.animation.AnimationTimer;
@@ -21,7 +21,7 @@ import static com.t.snakeGame.view.PlayingView.*;
 
 public class PlayingController {
     private Snake snake;
-    private Apple apple;
+    private RedApple apple;
     AnimationTimer timer;
     int count = 0;
     static final int DELAY = 10;
@@ -33,7 +33,7 @@ public class PlayingController {
     public void initialize() {
         gameScene.setFocusTraversable(true);
         snake = new Snake();
-        apple = new Apple(200, 200); // we just initialize like this
+        apple = new RedApple(200, 200); // we just initialize like this
         ScoreController.playingScore.bind(apple.applesEaten);
         GraphicsContext gc = playingCanvas.getGraphicsContext2D();
         gc.setFill(Color.BLACK);

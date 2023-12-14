@@ -1,7 +1,7 @@
 package com.t.snakeGame.controller;
 
 import com.t.snakeGame.Main;
-import com.t.snakeGame.model.Apple;
+import com.t.snakeGame.model.RedApple;
 import com.t.snakeGame.model.Snake;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class MainController {
     private Stage stage;
-    private Apple apple;
+    private RedApple apple;
     private Snake snake;
 
 //    public MainController(Stage currentStage, Apple a, Snake s) {

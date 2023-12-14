@@ -1,21 +1,16 @@
 package com.t.snakeGame.view;
 
-import com.t.snakeGame.controller.MainController;
-import com.t.snakeGame.model.Apple;
+import com.t.snakeGame.model.RedApple;
 import com.t.snakeGame.model.Snake;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 public class PlayingView extends BorderPane {
-    private Apple apple;
+    private RedApple apple;
     private Snake snake;
 
     public static String getSnakeColor() {
@@ -37,7 +32,7 @@ public class PlayingView extends BorderPane {
 
     public static final int GAME_UNITS = (SCREEN_WIDTH*SCREEN_HEIGHT)/(UNIT_SIZE*UNIT_SIZE);
 
-    public PlayingView(Apple newApple, Snake newSnake) throws Exception{
+    public PlayingView(RedApple newApple, Snake newSnake) throws Exception{
         apple = newApple;
         snake = newSnake;
 
