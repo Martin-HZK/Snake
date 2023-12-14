@@ -101,8 +101,7 @@ public class OptionController {
 
     private static void writeCSSFile(String cssPath, String cssContent) throws IOException {
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(cssPath));
-//        System.out.println("we write");
-//        System.out.println(cssContent);
+
         bufferedWriter.write(cssContent);
         bufferedWriter.close();
     }
