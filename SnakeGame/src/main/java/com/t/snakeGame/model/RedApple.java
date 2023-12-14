@@ -9,21 +9,13 @@ import java.util.Random;
 
 import static com.t.snakeGame.view.PlayingView.*;
 
-public class RedApple {
+public class RedApple implements Apple{
 
     IntegerProperty appleX;
     IntegerProperty appleY;
     Random random = new Random();
-//    static final int SCREEN_WIDTH = 1300;
-//    static final int SCREEN_HEIGHT = 750;
-//    static final int UNIT_SIZE = 50;
-
-
 
     private BooleanProperty isEaten = new SimpleBooleanProperty(false);
-
-
-
 
     public IntegerProperty applesEaten = new SimpleIntegerProperty(0);
 
@@ -73,6 +65,7 @@ public class RedApple {
     }
 
     // needs communication between model and controller to check whether the snake has eaten the apple
+    @Override
     public void checkApple() {
         // we need to use the controller to check if the snake has eaten the apple
         if (isEaten.get() == true) {
