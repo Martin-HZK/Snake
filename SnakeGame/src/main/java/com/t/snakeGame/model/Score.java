@@ -6,6 +6,7 @@ public class Score {
 
 
     private String playerScore;
+    private ScoreManager scoreManager;
 
 
     public String getPlayerName() {
