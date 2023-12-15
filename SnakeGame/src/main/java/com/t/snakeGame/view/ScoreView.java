@@ -26,4 +26,8 @@ public class ScoreView {
         playingStage.show();
     }
 
+    public void showScoreBoard() {
+
+    }
+
 }

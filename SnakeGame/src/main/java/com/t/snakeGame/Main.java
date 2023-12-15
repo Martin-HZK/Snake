@@ -1,6 +1,8 @@
 package com.t.snakeGame;
 
 import com.google.gson.JsonArray;
+import com.t.snakeGame.model.score.PlayScorePublisher;
+import com.t.snakeGame.model.score.ScorePublisher;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,6 +26,7 @@ public class Main extends Application {
     String bgColor;
     String txtFill;
 
+
     static final int SCREEN_WIDTH = 1300;
     static final int SCREEN_HEIGHT = 750;
     public static void main(String[]args) {
@@ -35,6 +38,8 @@ public class Main extends Application {
 
 
         loadUserSetting(); // load user setting for color from json file
+
+        PlayScorePublisher playScorePublisher = PlayScorePublisher.getInstance(); // create the global Publisher
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/com.t.snakeGame/startMain.fxml"));
