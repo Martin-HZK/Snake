@@ -1,11 +1,12 @@
-package com.t.snakeGame.model;
+package com.t.snakeGame.model.score;
 
-public class Score {
+public class PlayScore {
     private String playerName;
 
 
 
     private String playerScore;
+    private ScoreManager scoreManager;
 
 
     public String getPlayerName() {
@@ -24,7 +25,7 @@ public class Score {
         this.playerScore = playerScore;
     }
 
-    public Score(String playerName, String playerScore) {
+    public PlayScore(String playerName, String playerScore) {
         this.playerName = playerName;
         this.playerScore = playerScore;
     }
