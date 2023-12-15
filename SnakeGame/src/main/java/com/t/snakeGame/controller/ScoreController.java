@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.t.snakeGame.Main;
 import com.t.snakeGame.model.score.PlayScore;
+import com.t.snakeGame.model.score.ScoreSubscriber;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
@@ -40,7 +41,7 @@ public class ScoreController {
     private TableColumn<PlayScore, String> playerScore;
 
     @FXML
-    private TableView<PlayScore> scoreTable;
+    private TableView<ScoreSubscriber> scoreTable;
 
     @FXML
     public void initialize() {
@@ -82,7 +83,7 @@ public class ScoreController {
         Main.setRoot("/com.t.snakeGame/startMain");
     }
 
-    public ObservableList<PlayScore> setScoreBoard() {
+    public ObservableList<ScoreSubscriber> setScoreBoard() {
         JsonArray userScores = new JsonArray();
         try {
             BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/Score.json"));
@@ -93,12 +94,14 @@ public class ScoreController {
             e.printStackTrace();
         }
         System.out.println(userScores.size());
-        ArrayList<PlayScore> scoreList = new ArrayList<>();
+//        ArrayList<PlayScore> scoreList = new ArrayList<>();
+        ArrayList<ScoreSubscriber> scoreList = new ArrayList<>();
         for (JsonElement scoreName : userScores) {
             JsonObject userScore = scoreName.getAsJsonObject();
             String name = userScore.get("name").getAsString();
             String score = userScore.get("score").getAsString();
-            PlayScore newScore = new PlayScore(name, score);
+//            PlayScore newScore = new PlayScore(name, score);
+            ScoreSubscriber newScore = new ScoreSubscriber(name, score);
             scoreList.add(newScore);
         }
 

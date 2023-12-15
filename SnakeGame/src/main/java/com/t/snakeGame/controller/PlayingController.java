@@ -161,6 +161,10 @@ public class PlayingController {
     }
 
 
+    /**
+     * The score finally stored in json in this method
+     * @param g
+     */
     public void gameOver(GraphicsContext g) {
         g.setFill(Color.RED);
         g.setFont(Font.font("Ink Free", FontWeight.BOLD, 40));// Font.font("Ink Free", FontWeight.BOLD, 40)
