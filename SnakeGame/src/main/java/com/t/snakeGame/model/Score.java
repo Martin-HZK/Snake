@@ -28,6 +28,9 @@ public class Score {
         this.playerName = playerName;
         this.playerScore = playerScore;
     }
+    public Score() {
+        this.playerName = "Unknown";
+    }
 
 
 

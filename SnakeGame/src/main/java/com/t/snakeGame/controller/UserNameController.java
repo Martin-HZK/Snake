@@ -13,7 +13,7 @@ public class UserNameController {
     @FXML
     private TextField username;
 
-    Score playerScore;
+    Score playerScore = new Score();
     public void switchOnPlayClick(ActionEvent actionEvent) throws IOException {
         playerScore.setPlayerName(username.getText());
         Main.setRoot("/com.t.snakeGame/view/playingView");
