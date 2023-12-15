@@ -26,7 +26,7 @@ public class MainController {
     }
 
     public void switchOnStartClick(ActionEvent actionEvent) throws IOException {
-        Main.setRoot("/com.t.snakeGame/view/playingView");
+        Main.setRoot("/com.t.snakeGame/view/userNameView");
     }
 
     public void switchOnOptionClick(ActionEvent actionEvent) throws IOException {
