@@ -1,10 +1,6 @@
 package com.t.snakeGame.controller;
 
-import com.t.snakeGame.model.Snake;
-import com.t.snakeGame.view.OptionView;
 import com.t.snakeGame.view.PlayingView;
-import javafx.application.Platform;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import com.t.snakeGame.Main;
 import javafx.fxml.FXML;
@@ -13,7 +9,6 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.paint.Color;
 
 import java.io.*;
-import java.util.Random;
 
 public class OptionController {
 

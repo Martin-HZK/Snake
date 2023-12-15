@@ -1,8 +1,10 @@
 package com.t.snakeGame.controller;
 
 import com.t.snakeGame.Main;
+import com.t.snakeGame.model.NormalSnakeCreator;
 import com.t.snakeGame.model.RedApple;
-import com.t.snakeGame.model.Snake;
+import com.t.snakeGame.model.RedAppleCreator;
+import com.t.snakeGame.model.NormalSnake;
 import com.t.snakeGame.view.PlayingView;
 import javafx.animation.AnimationTimer;
 import javafx.animation.PauseTransition;
@@ -20,7 +22,7 @@ import java.io.IOException;
 import static com.t.snakeGame.view.PlayingView.*;
 
 public class PlayingController {
-    private Snake snake;
+    private NormalSnake snake;
     private RedApple apple;
     AnimationTimer timer;
     int count = 0;
@@ -31,9 +33,14 @@ public class PlayingController {
     private BorderPane gameScene;
     @FXML
     public void initialize() {
+        RedAppleCreator redAppleCreator = new RedAppleCreator();
+        NormalSnakeCreator snakeCreator = new NormalSnakeCreator();
         gameScene.setFocusTraversable(true);
-        snake = new Snake();
-        apple = new RedApple(200, 200); // we just initialize like this
+//        snake = new normalSnake();
+        snake = snakeCreator.createSnake();
+
+//        apple = new RedApple(200, 200); // we just initialize like this
+        apple = redAppleCreator.createApple(200, 200);
         ScoreController.playingScore.bind(apple.applesEaten);
         GraphicsContext gc = playingCanvas.getGraphicsContext2D();
         gc.setFill(Color.BLACK);
