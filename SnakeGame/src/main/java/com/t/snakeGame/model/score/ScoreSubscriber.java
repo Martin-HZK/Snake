@@ -6,24 +6,36 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
-public class PlayScorePublisher extends ScorePublisher{
-    private ArrayList<Subscriber> scoreList = new ArrayList<>();
-//    private
-    @Override
-    public void addSubscriber(Subscriber scoreSubscriber) {
-//        storeScore(scoreSubscriber.);
+public class ScoreSubscriber implements Subscriber{
 
-        scoreList.add(scoreSubscriber);
+
+
+    private String playerName;
+    private String playerScore;
+
+    public ScoreSubscriber(String playerName, String playerScore) {
+        this.playerName = playerName;
+        this.playerScore = playerScore;
+    }
+    public String getPlayerName() {
+        return playerName;
     }
 
-    @Override
-    public void removeSubscriber(Subscriber scoreSubscriber) {
-
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
     }
 
-    public void storeScore(int score) {
+    public String getPlayerScore() {
+        return playerScore;
+    }
+
+    public void setPlayerScore(String playerScore) {
+        this.playerScore = playerScore;
+    }
+    @Override
+    public void update() {
+        // this is for storing json file
         JsonArray userScores = new JsonArray();
         JsonObject jsonObject = new JsonObject();
         try {
@@ -35,8 +47,8 @@ public class PlayScorePublisher extends ScorePublisher{
             e.printStackTrace();
         }
         JsonObject newScore = new JsonObject();
-        newScore.addProperty("name", "Anonymous");
-        newScore.addProperty("score", score);
+        newScore.addProperty("name", playerName);
+        newScore.addProperty("score", playerScore);
         userScores.add(newScore);
         jsonObject.add("scores", userScores);
         try {
