@@ -1,9 +1,7 @@
 package com.t.snakeGame.controller;
 
 import com.t.snakeGame.Main;
-import com.t.snakeGame.model.score.PlayScore;
 import com.t.snakeGame.model.score.PlayScorePublisher;
-import com.t.snakeGame.model.score.ScorePublisher;
 import com.t.snakeGame.model.score.ScoreSubscriber;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

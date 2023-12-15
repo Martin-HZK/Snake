@@ -5,7 +5,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.t.snakeGame.Main;
-import com.t.snakeGame.model.score.PlayScore;
+import com.t.snakeGame.model.score.PlayScorePublisher;
 import com.t.snakeGame.model.score.ScoreSubscriber;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -35,18 +35,18 @@ public class ScoreController {
     private Label playerLevel;
 
     @FXML
-    private TableColumn<PlayScore, String> playerName;
+    private TableColumn<PlayScorePublisher, String> playerName;
 
     @FXML
-    private TableColumn<PlayScore, String> playerScore;
+    private TableColumn<PlayScorePublisher, String> playerScore;
 
     @FXML
     private TableView<ScoreSubscriber> scoreTable;
 
     @FXML
     public void initialize() {
-        playerName.setCellValueFactory(new PropertyValueFactory<PlayScore, String>("playerName"));
-        playerScore.setCellValueFactory(new PropertyValueFactory<PlayScore, String>("playerScore"));
+        playerName.setCellValueFactory(new PropertyValueFactory<PlayScorePublisher, String>("playerName"));
+        playerScore.setCellValueFactory(new PropertyValueFactory<PlayScorePublisher, String>("playerScore"));
 
         scoreTable.setItems(setScoreBoard());
 
