@@ -1,5 +1,6 @@
 package com.t.snakeGame.controller;
 
+import com.google.gson.*;
 import com.t.snakeGame.Main;
 import com.t.snakeGame.model.snake.NormalSnakeCreator;
 import com.t.snakeGame.model.apple.RedApple;
@@ -26,7 +27,11 @@ public class PlayingController {
     private RedApple apple;
     AnimationTimer timer;
     int count = 0;
+
     static final int DELAY = 10;
+
+    PlayScorePublisher playScorePublisher = PlayScorePublisher.getInstance(); // this is for storing the score in the game, should be the same for the whole game
+
     @FXML
     private Canvas playingCanvas;
     @FXML
@@ -154,12 +159,16 @@ public class PlayingController {
 
 
     public void switchToScore() throws IOException {
-        System.out.println("in playing the score is: " + apple.getApplesEaten());
+//        System.out.println("in playing the score is: " + apple.getApplesEaten());
         Main.setRoot("/com.t.snakeGame/view/scoreView");
 //        this.setReceivedData(apple.getApplesEaten());
     }
 
 
+    /**
+     * The score finally stored in json in this method
+     * @param g
+     */
     public void gameOver(GraphicsContext g) {
         g.setFill(Color.RED);
         g.setFont(Font.font("Ink Free", FontWeight.BOLD, 40));// Font.font("Ink Free", FontWeight.BOLD, 40)
@@ -170,6 +179,11 @@ public class PlayingController {
         PauseTransition pause = new PauseTransition(Duration.seconds(3)); // 3 seconds
 
         pause.setOnFinished(event -> {
+
+            ScoreSubscriber newScore = playScorePublisher.getLastSubscriber();
+            playScorePublisher.updateLastScore(Integer.toString(apple.getApplesEaten()));
+            newScore.update();// this is for storing into the json file
+            playScorePublisher.addSubscriber(newScore);
                 try {
                     switchToScore();
                 } catch (IOException e) {
@@ -179,6 +193,32 @@ public class PlayingController {
         pause.play();
 
 
+    }
+
+    public void storeScore(int score) {
+        JsonArray userScores = new JsonArray();
+        JsonObject jsonObject = new JsonObject();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/Score.json"));
+            jsonObject= JsonParser.parseReader(reader).getAsJsonObject();
+            reader.close();
+            userScores = jsonObject.getAsJsonArray("scores");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        JsonObject newScore = new JsonObject();
+        newScore.addProperty("name", "Anonymous");
+        newScore.addProperty("score", score);
+        userScores.add(newScore);
+        jsonObject.add("scores", userScores);
+        try {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            FileWriter writer = new FileWriter("src/main/resources/Score.json");
+            gson.toJson(jsonObject, writer);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
