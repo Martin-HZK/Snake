@@ -2,6 +2,8 @@ package com.t.snakeGame.controller;
 
 import com.google.gson.*;
 import com.t.snakeGame.Main;
+import com.t.snakeGame.model.score.PlayScorePublisher;
+import com.t.snakeGame.model.score.ScoreSubscriber;
 import com.t.snakeGame.model.snake.NormalSnakeCreator;
 import com.t.snakeGame.model.apple.RedApple;
 import com.t.snakeGame.model.apple.RedAppleCreator;
@@ -195,31 +197,31 @@ public class PlayingController {
 
     }
 
-    public void storeScore(int score) {
-        JsonArray userScores = new JsonArray();
-        JsonObject jsonObject = new JsonObject();
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/Score.json"));
-            jsonObject= JsonParser.parseReader(reader).getAsJsonObject();
-            reader.close();
-            userScores = jsonObject.getAsJsonArray("scores");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        JsonObject newScore = new JsonObject();
-        newScore.addProperty("name", "Anonymous");
-        newScore.addProperty("score", score);
-        userScores.add(newScore);
-        jsonObject.add("scores", userScores);
-        try {
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            FileWriter writer = new FileWriter("src/main/resources/Score.json");
-            gson.toJson(jsonObject, writer);
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    public void storeScore(int score) {
+//        JsonArray userScores = new JsonArray();
+//        JsonObject jsonObject = new JsonObject();
+//        try {
+//            BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/Score.json"));
+//            jsonObject= JsonParser.parseReader(reader).getAsJsonObject();
+//            reader.close();
+//            userScores = jsonObject.getAsJsonArray("scores");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        JsonObject newScore = new JsonObject();
+//        newScore.addProperty("name", "Anonymous");
+//        newScore.addProperty("score", score);
+//        userScores.add(newScore);
+//        jsonObject.add("scores", userScores);
+//        try {
+//            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//            FileWriter writer = new FileWriter("src/main/resources/Score.json");
+//            gson.toJson(jsonObject, writer);
+//            writer.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 
 }
