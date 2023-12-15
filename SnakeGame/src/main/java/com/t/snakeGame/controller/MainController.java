@@ -1,8 +1,8 @@
 package com.t.snakeGame.controller;
 
 import com.t.snakeGame.Main;
-import com.t.snakeGame.model.RedApple;
-import com.t.snakeGame.model.NormalSnake;
+import com.t.snakeGame.model.apple.RedApple;
+import com.t.snakeGame.model.snake.NormalSnake;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 

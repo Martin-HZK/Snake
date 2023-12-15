@@ -1,4 +1,4 @@
-package com.t.snakeGame.model;
+package com.t.snakeGame.model.snake;
 
 import static com.t.snakeGame.view.PlayingView.SCREEN_HEIGHT;
 import static com.t.snakeGame.view.PlayingView.SCREEN_WIDTH;

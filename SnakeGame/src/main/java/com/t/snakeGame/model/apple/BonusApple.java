@@ -1,4 +1,4 @@
-package com.t.snakeGame.model;
+package com.t.snakeGame.model.apple;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
@@ -8,9 +8,9 @@ import javafx.beans.property.SimpleIntegerProperty;
 import java.util.Random;
 
 import static com.t.snakeGame.view.PlayingView.*;
+import static com.t.snakeGame.view.PlayingView.UNIT_SIZE;
 
-public class RedApple implements Apple{
-
+public class BonusApple implements Apple{
     IntegerProperty appleX;
     IntegerProperty appleY;
     Random random = new Random();
@@ -20,11 +20,11 @@ public class RedApple implements Apple{
     public IntegerProperty applesEaten = new SimpleIntegerProperty(0);
 
     /**
-     * Constructor for Apple class
+     * Constructor for BonusApple class
      * @param x
      * @param y
      */
-    public RedApple(int x, int y) {
+    public BonusApple(int x, int y) {
         if (this.appleX == null || this.appleY == null) {
             this.appleX = new SimpleIntegerProperty();
             this.appleY = new SimpleIntegerProperty();
@@ -61,20 +61,10 @@ public class RedApple implements Apple{
     }
 
     public void setIsEaten(boolean iseaten) {
-        this.isEaten.set(iseaten);
+        isEaten.set(iseaten);
     }
-
-    // needs communication between model and controller to check whether the snake has eaten the apple
     @Override
     public void checkApple() {
-        // we need to use the controller to check if the snake has eaten the apple
-        if (isEaten.get() == true) {
-            newApple();
-            applesEaten.set(applesEaten.get() + 1);
-            isEaten.set(false);
-        }else {
-            return;
-        }
-    }
 
+    }
 }
