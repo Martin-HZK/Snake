@@ -3,6 +3,8 @@ package com.t.snakeGame.controller;
 import com.google.gson.*;
 import com.t.snakeGame.Main;
 import com.t.snakeGame.model.Apple;
+import com.t.snakeGame.model.PlayScorePublisher;
+import com.t.snakeGame.model.ScoreSubscriber;
 import com.t.snakeGame.model.Snake;
 import com.t.snakeGame.view.PlayingView;
 import javafx.animation.AnimationTimer;
@@ -28,6 +30,8 @@ public class PlayingController {
     private Apple apple;
     AnimationTimer timer;
     int count = 0;
+    PlayScorePublisher playScorePublisher = new PlayScorePublisher(); // this is for storing the score in the game, should be the same for the whole game
+
     static final int DELAY = 10;
     @FXML
     private Canvas playingCanvas;
@@ -167,7 +171,8 @@ public class PlayingController {
         PauseTransition pause = new PauseTransition(Duration.seconds(3)); // 3 seconds
 
         pause.setOnFinished(event -> {
-                storeScore(apple.getApplesEaten());
+//                storeScore(apple.getApplesEaten());
+            playScorePublisher.addSubscriber(new ScoreSubscriber("TBC", Integer.toString(apple.getApplesEaten())) );
                 try {
                     switchToScore();
                 } catch (IOException e) {

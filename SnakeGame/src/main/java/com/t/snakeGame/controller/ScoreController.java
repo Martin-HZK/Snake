@@ -5,7 +5,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.t.snakeGame.Main;
-import com.t.snakeGame.model.Score;
+import com.t.snakeGame.model.PlayScore;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
@@ -14,7 +14,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -35,18 +34,18 @@ public class ScoreController {
     private Label playerLevel;
 
     @FXML
-    private TableColumn<Score, String> playerName;
+    private TableColumn<PlayScore, String> playerName;
 
     @FXML
-    private TableColumn<Score, String> playerScore;
+    private TableColumn<PlayScore, String> playerScore;
 
     @FXML
-    private TableView<Score> scoreTable;
+    private TableView<PlayScore> scoreTable;
 
     @FXML
     public void initialize() {
-        playerName.setCellValueFactory(new PropertyValueFactory<Score, String>("playerName"));
-        playerScore.setCellValueFactory(new PropertyValueFactory<Score, String>("playerScore"));
+        playerName.setCellValueFactory(new PropertyValueFactory<PlayScore, String>("playerName"));
+        playerScore.setCellValueFactory(new PropertyValueFactory<PlayScore, String>("playerScore"));
 
         scoreTable.setItems(setScoreBoard());
 
@@ -83,7 +82,7 @@ public class ScoreController {
         Main.setRoot("/com.t.snakeGame/startMain");
     }
 
-    public ObservableList<Score> setScoreBoard() {
+    public ObservableList<PlayScore> setScoreBoard() {
         JsonArray userScores = new JsonArray();
         try {
             BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/Score.json"));
@@ -94,12 +93,12 @@ public class ScoreController {
             e.printStackTrace();
         }
         System.out.println(userScores.size());
-        ArrayList<Score> scoreList = new ArrayList<>();
+        ArrayList<PlayScore> scoreList = new ArrayList<>();
         for (JsonElement scoreName : userScores) {
             JsonObject userScore = scoreName.getAsJsonObject();
             String name = userScore.get("name").getAsString();
             String score = userScore.get("score").getAsString();
-            Score newScore = new Score(name, score);
+            PlayScore newScore = new PlayScore(name, score);
             scoreList.add(newScore);
         }
 

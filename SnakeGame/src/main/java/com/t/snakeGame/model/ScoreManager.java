@@ -3,15 +3,15 @@ package com.t.snakeGame.model;
 import java.util.ArrayList;
 
 public class ScoreManager {
-    Score score;
-    ArrayList<Score> scoreList = new ArrayList<>();
+    PlayScore score;
+    ArrayList<PlayScore> scoreList = new ArrayList<>();
 
 
-    public void addScore(Score score) {
+    public void addScore(PlayScore score) {
         scoreList.add(score);
     }
 
-    public void removeScore(Score score) {
+    public void removeScore(PlayScore score) {
         scoreList.remove(score);
     }
 
