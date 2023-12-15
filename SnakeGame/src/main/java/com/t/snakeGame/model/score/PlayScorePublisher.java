@@ -1,11 +1,5 @@
-package com.t.snakeGame.model;
+package com.t.snakeGame.model.score;
 
-import com.google.gson.*;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class PlayScorePublisher implements ScorePublisher {

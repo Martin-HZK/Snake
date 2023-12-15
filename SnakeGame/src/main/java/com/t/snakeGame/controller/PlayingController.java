@@ -3,8 +3,8 @@ package com.t.snakeGame.controller;
 import com.google.gson.*;
 import com.t.snakeGame.Main;
 import com.t.snakeGame.model.Apple;
-import com.t.snakeGame.model.PlayScorePublisher;
-import com.t.snakeGame.model.ScoreSubscriber;
+import com.t.snakeGame.model.score.PlayScorePublisher;
+import com.t.snakeGame.model.score.ScoreSubscriber;
 import com.t.snakeGame.model.Snake;
 import com.t.snakeGame.view.PlayingView;
 import javafx.animation.AnimationTimer;
@@ -172,7 +172,9 @@ public class PlayingController {
 
         pause.setOnFinished(event -> {
 //                storeScore(apple.getApplesEaten());
-            playScorePublisher.addSubscriber(new ScoreSubscriber("TBC", Integer.toString(apple.getApplesEaten())) );
+            ScoreSubscriber newScore = new ScoreSubscriber("TBC", Integer.toString(apple.getApplesEaten()));
+            newScore.update();// this is for storing into the json file
+            playScorePublisher.addSubscriber(newScore);
                 try {
                     switchToScore();
                 } catch (IOException e) {

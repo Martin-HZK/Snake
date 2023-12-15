@@ -1,4 +1,4 @@
-package com.t.snakeGame.model;
+package com.t.snakeGame.model.score;
 
 import java.util.ArrayList;
 

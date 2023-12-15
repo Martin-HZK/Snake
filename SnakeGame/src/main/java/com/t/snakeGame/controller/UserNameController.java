@@ -1,7 +1,7 @@
 package com.t.snakeGame.controller;
 
 import com.t.snakeGame.Main;
-import com.t.snakeGame.model.PlayScore;
+import com.t.snakeGame.model.score.PlayScore;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
