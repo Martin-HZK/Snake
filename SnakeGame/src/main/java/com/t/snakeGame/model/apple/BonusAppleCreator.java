@@ -1,4 +1,4 @@
-package com.t.snakeGame.model;
+package com.t.snakeGame.model.apple;
 
 public class BonusAppleCreator extends AppleCreator {
     @Override

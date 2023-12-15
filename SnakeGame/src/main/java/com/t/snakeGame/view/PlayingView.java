@@ -1,7 +1,7 @@
 package com.t.snakeGame.view;
 
-import com.t.snakeGame.model.RedApple;
-import com.t.snakeGame.model.NormalSnake;
+import com.t.snakeGame.model.apple.RedApple;
+import com.t.snakeGame.model.snake.NormalSnake;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

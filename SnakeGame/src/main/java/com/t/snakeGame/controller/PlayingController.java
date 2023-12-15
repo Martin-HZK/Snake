@@ -1,10 +1,10 @@
 package com.t.snakeGame.controller;
 
 import com.t.snakeGame.Main;
-import com.t.snakeGame.model.NormalSnakeCreator;
-import com.t.snakeGame.model.RedApple;
-import com.t.snakeGame.model.RedAppleCreator;
-import com.t.snakeGame.model.NormalSnake;
+import com.t.snakeGame.model.snake.NormalSnakeCreator;
+import com.t.snakeGame.model.apple.RedApple;
+import com.t.snakeGame.model.apple.RedAppleCreator;
+import com.t.snakeGame.model.snake.NormalSnake;
 import com.t.snakeGame.view.PlayingView;
 import javafx.animation.AnimationTimer;
 import javafx.animation.PauseTransition;
