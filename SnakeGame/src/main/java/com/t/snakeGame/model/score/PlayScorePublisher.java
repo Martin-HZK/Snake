@@ -3,15 +3,37 @@ package com.t.snakeGame.model.score;
 import java.util.ArrayList;
 
 public class PlayScorePublisher implements ScorePublisher {
-    private ArrayList<Subscriber> scoreList = new ArrayList<>();
-//    private
-
+    private static PlayScorePublisher instance;
+    private ArrayList<ScoreSubscriber> scoreList = new ArrayList<>();
 
     @Override
     public void addSubscriber(ScoreSubscriber scoreSubscriber) {
         scoreList.add(scoreSubscriber);
     }
+    public static PlayScorePublisher getInstance() {
+        if (instance == null) {
+            instance = new PlayScorePublisher();
+        }
+        return instance;
+    }
+    /**
+     * This method updates the score of the last subscriber in the list, which
+     * stands for the score of the player in current round.
+     * @param score
+     */
+    public void updateLastScore(String score) {
+       ScoreSubscriber last = getLastSubscriber();
+       last.setPlayerScore(score);// redefining score, otherwise it will be 0
+//       last.setPlayerName(playerName);
+    }
+    public void updateScore(String score) {
+        ScoreSubscriber last = scoreList.get(scoreList.size()-1);
+        last.setPlayerScore(score);
+    }
 
+    public ScoreSubscriber getLastSubscriber() {
+        return scoreList.get(scoreList.size()-1);
+    }
 //    @Override
 //    public void removeSubscriber(ScoreSubscriber scoreSubscriber) {
 //        scoreList.remove(scoreSubscriber);

@@ -6,7 +6,7 @@ public class PlayScore {
 
 
     private String playerScore;
-    private ScoreManager scoreManager;
+//    private ScoreManager scoreManager;
 
 
     public String getPlayerName() {
@@ -29,7 +29,7 @@ public class PlayScore {
         this.playerName = playerName;
         this.playerScore = playerScore;
     }
-    public Score() {
+    public PlayScore() {
         this.playerName = "Unknown";
     }
 

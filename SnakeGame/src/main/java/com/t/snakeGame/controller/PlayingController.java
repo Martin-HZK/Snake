@@ -30,7 +30,7 @@ public class PlayingController {
     private Apple apple;
     AnimationTimer timer;
     int count = 0;
-    PlayScorePublisher playScorePublisher = new PlayScorePublisher(); // this is for storing the score in the game, should be the same for the whole game
+    PlayScorePublisher playScorePublisher = PlayScorePublisher.getInstance(); // this is for storing the score in the game, should be the same for the whole game
 
     static final int DELAY = 10;
     @FXML
@@ -172,7 +172,10 @@ public class PlayingController {
 
         pause.setOnFinished(event -> {
 //                storeScore(apple.getApplesEaten());
-            ScoreSubscriber newScore = new ScoreSubscriber("TBC", Integer.toString(apple.getApplesEaten()));
+
+//            ScoreSubscriber newScore = new ScoreSubscriber("TBC", Integer.toString(apple.getApplesEaten()));
+            ScoreSubscriber newScore = playScorePublisher.getLastSubscriber();
+            playScorePublisher.updateLastScore(Integer.toString(apple.getApplesEaten()));
             newScore.update();// this is for storing into the json file
             playScorePublisher.addSubscriber(newScore);
                 try {
