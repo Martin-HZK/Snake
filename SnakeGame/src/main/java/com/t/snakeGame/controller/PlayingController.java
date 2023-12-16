@@ -1,12 +1,13 @@
 package com.t.snakeGame.controller;
 
-import com.google.gson.*;
 import com.t.snakeGame.Main;
 import com.t.snakeGame.model.apple.*;
 import com.t.snakeGame.model.score.PlayScorePublisher;
 import com.t.snakeGame.model.score.ScoreSubscriber;
 import com.t.snakeGame.model.snake.NormalSnakeCreator;
 import com.t.snakeGame.model.snake.NormalSnake;
+import com.t.snakeGame.model.snake.Snake;
+import com.t.snakeGame.model.sound.NormalSoundDecorator;
 import com.t.snakeGame.view.PlayingView;
 import javafx.animation.AnimationTimer;
 import javafx.animation.PauseTransition;
@@ -46,7 +47,9 @@ public class PlayingController {
         gameScene.setFocusTraversable(true);
 //        snake = new normalSnake();
         snake = snakeCreator.createSnake();
-
+//        Snake snake1 = new NormalSnakeCreator().createSnake();
+//        snake = new NormalSoundDecorator(snake1);
+//        snake = new NormalSoundDecorator(snake);
 //        apple = new RedApple(200, 200); // we just initialize like this
         apple = redAppleCreator.createApple(200, 200);
         unknownApple = unknownAppleCreator.createApple(800, 650);
