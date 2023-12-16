@@ -65,6 +65,12 @@ public class BonusApple implements Apple{
     }
     @Override
     public void checkApple() {
-
+        if (isEaten.get() == true) {
+            newApple();
+            applesEaten.set(applesEaten.get() + 10);
+            isEaten.set(false);
+        }else {
+            return;
+        }
     }
 }

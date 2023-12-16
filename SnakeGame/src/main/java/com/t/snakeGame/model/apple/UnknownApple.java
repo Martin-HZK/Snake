@@ -79,6 +79,14 @@ public class UnknownApple implements Apple{
         // we need to use the controller to check if the snake has eaten the apple
         if (isEaten.get() == true) {
             newApple();
+
+            if (isBonus) {
+                applesEaten.set(applesEaten.get() + 10);
+            }else {
+                // this is a bad apple
+                applesEaten.set(applesEaten.get() - 3);
+            }
+
             applesEaten.set(applesEaten.get() + 1);
             isEaten.set(false);
         }else {
