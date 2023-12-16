@@ -1,6 +1,8 @@
 package com.t.snakeGame.model.apple;
 
 import com.t.snakeGame.model.apple.Apple;
+import com.t.snakeGame.model.soundStrategy.Context;
+import com.t.snakeGame.model.soundStrategy.PlayNormalEatSound;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -69,10 +71,14 @@ public class RedApple implements Apple {
     @Override
     public void checkApple() {
         // we need to use the controller to check if the snake has eaten the apple
+        Context soundPlay = new Context();
+        soundPlay.setStrategy(new PlayNormalEatSound());
+
         if (isEaten.get() == true) {
             newApple();
             applesEaten.set(applesEaten.get() + 1);
             isEaten.set(false);
+            soundPlay.executeStrategy();
         }else {
             return;
         }

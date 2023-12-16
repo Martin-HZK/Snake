@@ -15,11 +15,14 @@ public class BonusSound extends AppleDecorator {
         bonusSound();
     }
 
-private void bonusSound() {
-    Media bonus = new Media("src/resources/sound/bonusEat.wav");
-    MediaPlayer bonusPlayer = new MediaPlayer(bonus);
-    bonusPlayer.play();
+    /**
+     * Plays bonus sound when the bonus apple appears
+     */
+    private void bonusSound() {
+        Media bonus = new Media("src/resources/sound/bonusEat.wav");
+        MediaPlayer bonusPlayer = new MediaPlayer(bonus);
+        bonusPlayer.play();
 
-}
+    }
 
 }
