@@ -13,7 +13,6 @@
 
 <AnchorPane prefHeight="750" prefWidth="1300" style="-fx-background-color: black;-fx-text-fill: #fc310d" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.t.snakeGame.controller.ScoreController">
    <children>
-      <Button layoutX="1142.0" layoutY="640.0" mnemonicParsing="false" onAction="#switchOnRestartClick" text="Restart" />
       <HBox alignment="CENTER" layoutX="116.0" layoutY="141.0" prefHeight="515.0" prefWidth="1019.0">
          <children>
             <VBox alignment="CENTER" prefHeight="547.0" prefWidth="396.0">
@@ -70,15 +69,32 @@
                   <Insets right="150.0" />
                </HBox.margin>
             </VBox>
-            <TableView fx:id="scoreTable" prefHeight="312.0" prefWidth="312.0" style="-fx-background-color: grey;">
-              <columns>
-                <TableColumn fx:id="playerName" prefWidth="150.0" text="Player" />
-                <TableColumn fx:id="playerScore" prefWidth="157.0" text="Score" />
-              </columns>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </TableView>
+            <VBox alignment="TOP_CENTER" prefHeight="515.0" prefWidth="343.0">
+               <children>
+                  <TableView fx:id="scoreTable" prefHeight="372.0" prefWidth="343.0" style="-fx-background-color: grey;">
+                    <columns>
+                      <TableColumn fx:id="playerName" prefWidth="150.0" text="Player" />
+                      <TableColumn fx:id="playerScore" prefWidth="157.0" text="Score" />
+                    </columns>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#clearScore" text="Clear" />
+                        <Button mnemonicParsing="false" onAction="#switchOnRestartClick" text="Restart">
+                           <HBox.margin>
+                              <Insets left="40.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
       </HBox>
    </children>

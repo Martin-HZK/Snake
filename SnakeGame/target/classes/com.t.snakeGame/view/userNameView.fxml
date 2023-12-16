@@ -8,15 +8,18 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: Black;-fx-text-fill: #fc310d" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.t.snakeGame.controller.UserNameController">
+<AnchorPane prefHeight="750.0" prefWidth="1300.0" style="-fx-background-color: Black;-fx-text-fill: #fc310d" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.t.snakeGame.controller.UserNameController">
    <children>
-      <Button layoutX="487.0" layoutY="316.0" mnemonicParsing="false" onAction="#switchOnPlayClick" text="Play" />
-      <Label layoutX="148.0" layoutY="50.0" text="Enter Your Name" textFill="#fc310d">
+      <Button layoutX="549.0" layoutY="391.0" mnemonicParsing="false" onAction="#switchOnPlayClick" prefHeight="70.0" prefWidth="122.0" text="Play">
+         <font>
+            <Font size="28.0" />
+         </font></Button>
+      <Label layoutX="440.0" layoutY="67.0" text="Enter Your Name" textFill="#fc310d">
          <font>
             <Font size="39.0" />
          </font>
       </Label>
-      <HBox alignment="CENTER" layoutX="154.0" layoutY="141.0" prefHeight="100.0" prefWidth="307.0">
+      <HBox alignment="CENTER" layoutX="436.0" layoutY="196.0" prefHeight="100.0" prefWidth="307.0">
          <children>
             <Label text="Name:" textFill="#fc310d">
                <font>

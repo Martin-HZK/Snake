@@ -42,6 +42,7 @@ public class ScoreController {
 
     @FXML
     private TableView<ScoreSubscriber> scoreTable;
+    PlayScorePublisher playScorePublisher = PlayScorePublisher.getInstance();
 
     @FXML
     public void initialize() {
@@ -82,6 +83,14 @@ public class ScoreController {
     public void switchOnRestartClick() throws IOException {
         Main.setRoot("/com.t.snakeGame/startMain");
     }
+
+    public void clearScore() throws IOException {
+        scoreTable.getItems().clear();
+        scoreTable.refresh();
+        playScorePublisher.clearAllScores();
+    }
+
+
 
     public ObservableList<ScoreSubscriber> setScoreBoard() {
         JsonArray userScores = new JsonArray();

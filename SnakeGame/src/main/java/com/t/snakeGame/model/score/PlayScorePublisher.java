@@ -1,5 +1,11 @@
 package com.t.snakeGame.model.score;
 
+import com.google.gson.*;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class PlayScorePublisher implements ScorePublisher {
@@ -33,6 +39,35 @@ public class PlayScorePublisher implements ScorePublisher {
 
     public ScoreSubscriber getLastSubscriber() {
         return scoreList.get(scoreList.size()-1);
+    }
+
+    public void clearAllScores() {
+        scoreList.clear();
+        clearJsonScore();
+    }
+
+    private void clearJsonScore() {
+        // TODO Auto-generated method stub
+        JsonArray userScores = new JsonArray();
+        JsonObject jsonObject = new JsonObject();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/Score.json"));
+            jsonObject= JsonParser.parseReader(reader).getAsJsonObject();
+            reader.close();
+            userScores = jsonObject.getAsJsonArray("scores");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        userScores = new JsonArray();
+        jsonObject.add("scores", userScores);
+        try {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            FileWriter writer = new FileWriter("src/main/resources/Score.json");
+            gson.toJson(jsonObject, writer);
+            writer.close();
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
     }
 //    @Override
 //    public void removeSubscriber(ScoreSubscriber scoreSubscriber) {

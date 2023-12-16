@@ -32,4 +32,8 @@ public class MainController {
     public void switchOnOptionClick(ActionEvent actionEvent) throws IOException {
         Main.setRoot("/com.t.snakeGame/view/optionView");
     }
+
+    public void switchOnScoreBoard(ActionEvent actionEvent) throws IOException {
+        Main.setRoot("/com.t.snakeGame/view/scoreView");
+    }
 }
