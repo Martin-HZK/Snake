@@ -1,6 +1,8 @@
-package com.t.snakeGame.model.apple;
+package com.t.snakeGame.model.sound;
 
-public abstract class AppleDecorator implements Apple{
+import com.t.snakeGame.model.apple.Apple;
+
+public abstract class AppleDecorator implements Apple {
     protected Apple decoratedApple;
 
     public AppleDecorator(Apple decoratedApple) {

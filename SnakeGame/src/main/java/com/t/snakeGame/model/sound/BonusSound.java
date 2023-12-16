@@ -1,4 +1,5 @@
-package com.t.snakeGame.model.apple;
+package com.t.snakeGame.model.sound;
+import com.t.snakeGame.model.apple.Apple;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 

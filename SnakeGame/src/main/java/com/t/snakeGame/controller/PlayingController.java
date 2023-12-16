@@ -2,11 +2,10 @@ package com.t.snakeGame.controller;
 
 import com.google.gson.*;
 import com.t.snakeGame.Main;
+import com.t.snakeGame.model.apple.*;
 import com.t.snakeGame.model.score.PlayScorePublisher;
 import com.t.snakeGame.model.score.ScoreSubscriber;
 import com.t.snakeGame.model.snake.NormalSnakeCreator;
-import com.t.snakeGame.model.apple.RedApple;
-import com.t.snakeGame.model.apple.RedAppleCreator;
 import com.t.snakeGame.model.snake.NormalSnake;
 import com.t.snakeGame.view.PlayingView;
 import javafx.animation.AnimationTimer;
@@ -27,6 +26,7 @@ import static com.t.snakeGame.view.PlayingView.*;
 public class PlayingController {
     private NormalSnake snake;
     private RedApple apple;
+    private UnknownApple unknownApple;
     AnimationTimer timer;
     int count = 0;
 
@@ -41,6 +41,7 @@ public class PlayingController {
     @FXML
     public void initialize() {
         RedAppleCreator redAppleCreator = new RedAppleCreator();
+        UnknownAppleCreator unknownAppleCreator = new UnknownAppleCreator();
         NormalSnakeCreator snakeCreator = new NormalSnakeCreator();
         gameScene.setFocusTraversable(true);
 //        snake = new normalSnake();
@@ -48,6 +49,7 @@ public class PlayingController {
 
 //        apple = new RedApple(200, 200); // we just initialize like this
         apple = redAppleCreator.createApple(200, 200);
+        unknownApple = unknownAppleCreator.createApple(800, 650);
         ScoreController.playingScore.bind(apple.applesEaten);
         GraphicsContext gc = playingCanvas.getGraphicsContext2D();
         gc.setFill(Color.BLACK);
@@ -58,40 +60,30 @@ public class PlayingController {
 
 
         timer = new AnimationTimer() {
-        @Override
-        public void handle(long l) {
-            count++;
+            @Override
+            public void handle(long l) {
+                count++;
 
-            if (count == 0) {
-                if (snake.isRunning()) {
-                    snake.move();
-                    if (snake.getHeadX() == apple.getAppleX() && snake.getHeadY() == apple.getAppleY()) {
-                        apple.setIsEaten(true);
-                        snake.setBodyParts(snake.getBodyParts() + 1);
+                if (count == 0 || count > DELAY) {
+                    if (snake.isRunning()) {
+                        snake.move();
+                        if (snake.getHeadX() == apple.getAppleX() && snake.getHeadY() == apple.getAppleY()) {
+                            apple.setIsEaten(true);
+                            snake.setBodyParts(snake.getBodyParts() + 1);
+                        }
+                        apple.checkApple();
+                        snake.checkCollisions();
+                        gc.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
                     }
-                    apple.checkApple();
-                    snake.checkCollisions();
-                    gc.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-                }
-                draw(gc);
-                return;
-            }
+                    draw(gc);
 
-            if (count > DELAY){
-                if (snake.isRunning()) {
-                    snake.move();
-                    if (snake.getHeadX() == apple.getAppleX() && snake.getHeadY() == apple.getAppleY()) {
-                        apple.setIsEaten(true);
-                        snake.setBodyParts(snake.getBodyParts() + 1);
-                    }
-                    apple.checkApple();
-                    snake.checkCollisions();
-                    gc.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+                    if (count > DELAY)
+                        count = 0;
+//                    return;
                 }
-                draw(gc);
-                count = 0;
+
+
             }
-        }
         };
         timer.start();
         Main.scene.setOnKeyPressed(e -> {
