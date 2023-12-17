@@ -1,13 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="gameScene" prefHeight="750" prefWidth="1300" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.t.snakeGame.controller.PlayingController" >
-
-    <center>
-        <Canvas fx:id="playingCanvas" height="750" width="1300"  />
-
-    </center>
-
-</BorderPane>
+<AnchorPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.t.snakeGame.controller.PlayingController">
+   <children>
+      <BorderPane fx:id="gameScene" prefHeight="750" prefWidth="1300" style="-fx-background-color: black;">
+      
+          <center>
+              <Canvas fx:id="playingCanvas" height="750" width="1300" />
+      
+          </center>
+         <top>
+            <VBox alignment="TOP_RIGHT" prefHeight="37.0" prefWidth="1300.0" style="-fx-border-color: red; -fx-border-width: 0 0 5 0;" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="TOP_RIGHT" prefHeight="45.0" prefWidth="1300.0">
+                     <children>
+                        <ImageView fx:id="resumeButton" fitHeight="73.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="pauseButton" fitHeight="66.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </top>
+      
+      </BorderPane>
+   </children>
+</AnchorPane>
