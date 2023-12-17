@@ -106,6 +106,11 @@ public class OptionController {
         bufferedWriter.write(cssContent);
         bufferedWriter.close();
     }
+    public void onClickDefaultSetting() throws IOException {
+        Main.cssStyle = "-fx-text-fill: #fc310d;-fx-background-color: #000000";
+        Main.getRoot().setStyle(Main.cssStyle);
+        Main.saveUserSetting("#fc310d", "#000000");
+    }
 
 
 
