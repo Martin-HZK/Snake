@@ -7,6 +7,7 @@ import com.t.snakeGame.model.score.PlayScorePublisher;
 import com.t.snakeGame.model.score.ScoreSubscriber;
 import com.t.snakeGame.model.snake.NormalSnakeCreator;
 import com.t.snakeGame.model.snake.NormalSnake;
+import com.t.snakeGame.model.soundStrategy.Context;
 import com.t.snakeGame.view.PlayingView;
 import javafx.animation.AnimationTimer;
 import javafx.animation.PauseTransition;
@@ -79,6 +80,8 @@ public class PlayingController {
         RedAppleCreator redAppleCreator = new RedAppleCreator();
         UnknownAppleCreator unknownAppleCreator = new UnknownAppleCreator();
         NormalSnakeCreator snakeCreator = new NormalSnakeCreator();
+
+
         gameScene.setFocusTraversable(true);
         snake = snakeCreator.createSnake();
 

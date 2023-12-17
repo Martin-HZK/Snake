@@ -1,5 +1,8 @@
 package com.t.snakeGame.model.apple;
 
+import com.t.snakeGame.model.soundStrategy.Context;
+import com.t.snakeGame.model.soundStrategy.PlayBonusEatSound;
+import com.t.snakeGame.model.soundStrategy.PlayNormalEatSound;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -121,10 +124,16 @@ public class BonusApple implements Apple{
      */
     @Override
     public void checkApple() {
+        Context soundPlay = new Context();
+        soundPlay.setStrategy(new PlayBonusEatSound());
         if (isEaten.get() == true) {
             newApple();
             applesEaten.set(applesEaten.get() + 10);
             isEaten.set(false);
+            Thread bonusThread = new Thread(() -> {
+                    soundPlay.executeStrategy();
+            });
+            bonusThread.start();
         }else {
             return;
         }
