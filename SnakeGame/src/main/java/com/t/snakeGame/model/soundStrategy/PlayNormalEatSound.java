@@ -5,7 +5,13 @@ import javafx.scene.media.MediaPlayer;
 
 import java.io.File;
 
+/**
+ * This class implements Strategy class, representing a strategy for playing normalEat sound.
+ */
 public class PlayNormalEatSound implements Strategy{
+    /**
+     * This method plays the normalEat sound.
+     */
     @Override
     public void playSound() {
             Media bonus = new Media(new File("src/main/resources/sound/normalEat.mp3").toURI().toString());
