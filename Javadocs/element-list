@@ -1,0 +1,9 @@
+module:com.t.snakeGame
+com.t.snakeGame
+com.t.snakeGame.controller
+com.t.snakeGame.model
+com.t.snakeGame.model.apple
+com.t.snakeGame.model.score
+com.t.snakeGame.model.snake
+com.t.snakeGame.model.sound
+com.t.snakeGame.view

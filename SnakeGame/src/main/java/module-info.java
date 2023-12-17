@@ -19,6 +19,8 @@ module com.t.snakeGame {
     opens com.t.snakeGame to javafx.fxml;
     exports com.t.snakeGame;
     exports com.t.snakeGame.controller;
-    exports com.t.snakeGame.model;
+    exports com.t.snakeGame.model.apple;
+    exports com.t.snakeGame.model.snake;
+
     exports com.t.snakeGame.model.score;
 }
