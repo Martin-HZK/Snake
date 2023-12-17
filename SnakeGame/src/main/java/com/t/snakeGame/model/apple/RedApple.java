@@ -78,7 +78,10 @@ public class RedApple implements Apple {
             newApple();
             applesEaten.set(applesEaten.get() + 1);
             isEaten.set(false);
-            soundPlay.executeStrategy();
+            Thread soundThread = new Thread(() -> {
+                soundPlay.executeStrategy();
+            });
+            soundThread.start();
         }else {
             return;
         }

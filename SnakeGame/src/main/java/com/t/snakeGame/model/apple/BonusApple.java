@@ -74,7 +74,10 @@ public class BonusApple implements Apple{
             newApple();
             applesEaten.set(applesEaten.get() + 10);
             isEaten.set(false);
-            soundPlay.executeStrategy();
+            Thread bonusThread = new Thread(() -> {
+                    soundPlay.executeStrategy();
+            });
+            bonusThread.start();
         }else {
             return;
         }

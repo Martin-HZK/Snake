@@ -84,17 +84,24 @@ public class UnknownApple implements Apple{
         Context soundPlay = new Context();
         if (isEaten.get() == true) {
             newApple();
+            Thread soundThread;
 
             if (isBonus) {
                 applesEaten.set(applesEaten.get() + 10);
                 soundPlay.setStrategy(new PlayBonusEatSound());
+                soundThread = new Thread(() -> {
+                    soundPlay.executeStrategy();
+                });
             }else {
                 // this is a bad apple
                 applesEaten.set(applesEaten.get() - 3);
                 soundPlay.setStrategy(new PlayBadEatSound());
+                soundThread = new Thread(() -> {
+                    soundPlay.executeStrategy();
+                });
             }
+            soundThread.start();
 
-            soundPlay.executeStrategy();
             isEaten.set(false);
         }else {
             return;
