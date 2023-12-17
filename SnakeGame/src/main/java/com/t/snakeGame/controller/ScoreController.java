@@ -11,6 +11,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -118,6 +119,13 @@ public class ScoreController {
      */
     public void switchOnRestartClick() throws IOException {
         Main.setRoot("/com.t.snakeGame/startMain");
+    }
+
+    /**
+     * Exit the game with clicking on exit button.
+     */
+    public void clickOnExit(ActionEvent actionEvent) {
+        System.exit(0);
     }
 
     /**

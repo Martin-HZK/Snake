@@ -47,6 +47,7 @@ public class MainController {
         Main.setRoot("/com.t.snakeGame/view/optionView");
     }
 
+
     /**
      * Switch to score window
      * @param actionEvent the action event

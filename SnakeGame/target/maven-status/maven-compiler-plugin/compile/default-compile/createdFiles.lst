@@ -13,12 +13,10 @@ com\t\snakeGame\controller\MainController.class
 com\t\snakeGame\model\snake\Snake.class
 com\t\snakeGame\controller\OptionController.class
 com\t\snakeGame\Main.class
-com\t\snakeGame\model\apple\AppleDecorator.class
 com\t\snakeGame\model\snake\NormalSnake.class
 com\t\snakeGame\model\apple\Apple.class
 com\t\snakeGame\controller\PlayingController.class
 module-info.class
-com\t\snakeGame\model\apple\BonusSound.class
 com\t\snakeGame\model\snake\SnakeCreator.class
 com\t\snakeGame\model\apple\BonusApple.class
 com\t\snakeGame\model\apple\RedApple.class

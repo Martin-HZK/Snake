@@ -83,7 +83,7 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER" prefHeight="69.0" prefWidth="343.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#clearScore" text="Clear" />
                         <Button mnemonicParsing="false" onAction="#switchOnRestartClick" text="Restart">
@@ -91,6 +91,11 @@
                               <Insets left="40.0" />
                            </HBox.margin>
                         </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="58.0" prefWidth="343.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#clickOnExit" text="Exit" />
                      </children>
                   </HBox>
                </children>
