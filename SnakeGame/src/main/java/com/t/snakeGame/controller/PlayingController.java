@@ -23,28 +23,63 @@ import java.io.IOException;
 
 import static com.t.snakeGame.view.PlayingView.*;
 
+/**
+ * This class represents a controller for playingView.fxml.
+ * It defines the method for switching to scoreView.fxml.
+ */
 public class PlayingController {
+    /**
+     * The snake.
+     */
     private NormalSnake snake;
+    /**
+     * The red apple.
+     */
     private RedApple apple;
+    /**
+     * The unknown apple.
+     */
     private UnknownApple unknownApple;
+    /**
+     * The timer.
+     */
     AnimationTimer timer;
+    /**
+     * The counter for timer
+     */
     int count = 0;
 
+    /**
+     * The delay for timer
+     */
     static final int DELAY = 10;
 
+    /**
+     * The play score publisher.
+     */
     PlayScorePublisher playScorePublisher = PlayScorePublisher.getInstance(); // this is for storing the score in the game, should be the same for the whole game
 
+    /**
+     * The game canvas.
+     */
     @FXML
     private Canvas playingCanvas;
+    /**
+     * The game scene.
+     */
     @FXML
     private BorderPane gameScene;
+
+    /**
+     * Initialize the game with the apple and the snake. The timer is also initialized for the snake motion.
+     * Accept the key input from the user.
+     */
     @FXML
     public void initialize() {
         RedAppleCreator redAppleCreator = new RedAppleCreator();
         UnknownAppleCreator unknownAppleCreator = new UnknownAppleCreator();
         NormalSnakeCreator snakeCreator = new NormalSnakeCreator();
         gameScene.setFocusTraversable(true);
-//        snake = new normalSnake();
         snake = snakeCreator.createSnake();
 
 //        apple = new RedApple(200, 200); // we just initialize like this
@@ -113,6 +148,10 @@ public class PlayingController {
         );
     }
 
+    /**
+     * Draw the snake and the apple.
+     * @param g the graphics context
+     */
     public void draw(GraphicsContext g) {
         Color snakeColor = Color.valueOf(PlayingView.getSnakeColor());
         Color snakeTail;
@@ -152,10 +191,12 @@ public class PlayingController {
     }
 
 
+    /**
+     * Switch to score window
+     * @throws IOException the io exception
+     */
     public void switchToScore() throws IOException {
-//        System.out.println("in playing the score is: " + apple.getApplesEaten());
         Main.setRoot("/com.t.snakeGame/view/scoreView");
-//        this.setReceivedData(apple.getApplesEaten());
     }
 
 

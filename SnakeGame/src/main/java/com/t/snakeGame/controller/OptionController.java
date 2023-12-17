@@ -10,24 +10,40 @@ import javafx.scene.paint.Color;
 
 import java.io.*;
 
+/**
+ * This class represents a controller for option.fxml.
+ * It defines the method for switching to startMain.fxml.
+ */
 public class OptionController {
 
+    /**
+     * The snake color picker. The user can select the color of the snake.
+     */
     @FXML
     private ColorPicker snakeColor = new ColorPicker(Color.GREEN);
+    /**
+     * The text color picker. The user can select the color of the text.
+     */
     @FXML
     private ColorPicker textColor = new ColorPicker(Color.valueOf("#fc310d"));
     @FXML
     private Canvas snakeCanvas;
 
-//    private boolean cssAdd = true; // false- add style.css, true- add dynamicStyle.css
+    /**
+     * Switch to Main window
+     * @param actionEvent the action event
+     * @throws IOException the io exception
+     */
     public void switchOnBackClick(ActionEvent actionEvent) throws IOException {
         Main.setRoot("/com.t.snakeGame/startMain");
     }
 
+    /**
+     * Listen to the color picker and change the color of the snake and the text.
+     * @throws IOException the io exception
+     */
     @FXML
     public void initialize() {
-
-
 
         textColor.valueProperty().addListener((observable, oldValue, newValue) -> {
             try {
@@ -62,44 +78,17 @@ public class OptionController {
 
         });
     }
-    private void updateDynamicStyle(String newColor) throws IOException{
-        try {
-            String dynamicCSS = readCSSFile("src/main/resources/dynamicStyle.css");
-            dynamicCSS = updateCSSColor(dynamicCSS, ".label", "-fx-text-fill", newColor);
-            writeCSSFile("src/main/resources/dynamicStyle.css", dynamicCSS);
-       } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
+    /**
+     * This method converts the color from argb to hex.
+     * @param argb
+     * @return
+     */
     public String toHex(String argb) {
         return "#" + argb.substring(2, 8);
     }
 
-    private static String readCSSFile(String cssPath) throws IOException {
-        StringBuilder content = new StringBuilder();
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(cssPath));
-        String line;
-        while ((line = bufferedReader.readLine()) != null) {
-            content.append(line).append("\n");
-        }
-        bufferedReader.close();
-        return content.toString();
-    }
-    private static String updateCSSColor(String originalCSS, String selector, String property, String newValue) throws IOException {
 
-        String returnStr = originalCSS.replaceAll(selector + "\\s*\\{\\s*" + property + "\\s*:\\s*#[0-9A-Fa-f]{6};", selector + " { " + property + ": " + newValue + ";");
-
-        System.out.println("The return string is " + returnStr);
-        return returnStr;
-    }
-
-    private static void writeCSSFile(String cssPath, String cssContent) throws IOException {
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(cssPath));
-
-        bufferedWriter.write(cssContent);
-        bufferedWriter.close();
-    }
 
 
 

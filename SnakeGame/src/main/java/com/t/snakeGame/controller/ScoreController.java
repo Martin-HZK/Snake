@@ -24,26 +24,63 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * This class represents a controller for score.fxml.
+ * It defines the method for switching to startMain.fxml.
+ */
 public class ScoreController {
 
+
+    /**
+     * The playing score of the player.
+     */
     public static IntegerProperty playingScore = new SimpleIntegerProperty(0);
+
+    /**
+     * The snake level image.
+     */
     @FXML
     private ImageView snakeLevel;
+
+    /**
+     * The total score of the player.
+     */
     @FXML
     private Label totalScore;
+
+    /**
+     * The player level.
+     */
     @FXML
     private Label playerLevel;
 
+    /**
+     * The player name column.
+     */
     @FXML
     private TableColumn<PlayScorePublisher, String> playerName;
 
+    /**
+     * The player score column.
+     */
     @FXML
     private TableColumn<PlayScorePublisher, String> playerScore;
 
+    /**
+     * The score table.
+     */
     @FXML
     private TableView<ScoreSubscriber> scoreTable;
+
+    /**
+     * The play score publisher.
+     */
     PlayScorePublisher playScorePublisher = PlayScorePublisher.getInstance();
 
+    /**
+     * Set the score board and the snake level.
+     * @throws IOException the io exception
+     */
     @FXML
     public void initialize() {
         playerName.setCellValueFactory(new PropertyValueFactory<PlayScorePublisher, String>("playerName"));
@@ -74,16 +111,20 @@ public class ScoreController {
             e.printStackTrace();
         }
 
-
-
-        // load table
-
     }
 
+    /**
+     * Switch to Main window
+     * @throws IOException the io exception
+     */
     public void switchOnRestartClick() throws IOException {
         Main.setRoot("/com.t.snakeGame/startMain");
     }
 
+    /**
+     * Clear all scores.
+     * @throws IOException the io exception
+     */
     public void clearScore() throws IOException {
         scoreTable.getItems().clear();
         scoreTable.refresh();
@@ -91,7 +132,10 @@ public class ScoreController {
     }
 
 
-
+    /**
+     * This method sets the score board.
+     * @return the observable list
+     */
     public ObservableList<ScoreSubscriber> setScoreBoard() {
         JsonArray userScores = new JsonArray();
         try {
@@ -103,21 +147,15 @@ public class ScoreController {
             e.printStackTrace();
         }
         System.out.println(userScores.size());
-//        ArrayList<PlayScore> scoreList = new ArrayList<>();
         ArrayList<ScoreSubscriber> scoreList = new ArrayList<>();
         for (JsonElement scoreName : userScores) {
             JsonObject userScore = scoreName.getAsJsonObject();
             String name = userScore.get("name").getAsString();
             String score = userScore.get("score").getAsString();
-//            PlayScore newScore = new PlayScore(name, score);
             ScoreSubscriber newScore = new ScoreSubscriber(name, score);
             scoreList.add(newScore);
         }
 
-//        for (int i = 0; i < scoreList.size(); i++) {
-//            System.out.println(scoreList.get(i).getPlayerName() + ": " + scoreList.get(i).getPlayerScore());
-//
-//        }
         return FXCollections.observableArrayList(scoreList);
     }
 

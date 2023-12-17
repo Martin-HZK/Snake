@@ -9,16 +9,28 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
+/**
+ * This class represents a controller for userName.fxml.
+ */
 public class UserNameController {
+    /**
+     * The username text field.
+     */
     @FXML
     private TextField username;
 
-//    PlayScore playerScore = new PlayScore();
+    /**
+     * player score publisher
+     */
     PlayScorePublisher playerScorePublisher = PlayScorePublisher.getInstance();
 
 
+    /**
+     * Switch to playingView and add the player to the publisher.
+     * @param actionEvent the action event
+     * @throws IOException the io exception
+     */
     public void switchOnPlayClick(ActionEvent actionEvent) throws IOException {
-//        playerScore.setPlayerName(username.getText());
         playerScorePublisher.addSubscriber(new ScoreSubscriber(username.getText(), "0")); // we primitive set it to 0
         Main.setRoot("/com.t.snakeGame/view/playingView");
     }
