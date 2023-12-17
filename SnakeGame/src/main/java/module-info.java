@@ -21,6 +21,6 @@ module com.t.snakeGame {
     exports com.t.snakeGame.controller;
     exports com.t.snakeGame.model.apple;
     exports com.t.snakeGame.model.snake;
-
+    exports com.t.snakeGame.model.gamePause;
     exports com.t.snakeGame.model.score;
 }
