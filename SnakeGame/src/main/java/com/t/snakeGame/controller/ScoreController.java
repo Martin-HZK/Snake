@@ -79,7 +79,6 @@ public class ScoreController {
 
     /**
      * Set the score board and the snake level.
-     * @throws IOException the io exception
      */
     @FXML
     public void initialize() {

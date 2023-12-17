@@ -40,7 +40,6 @@ public class OptionController {
 
     /**
      * Listen to the color picker and change the color of the snake and the text.
-     * @throws IOException the io exception
      */
     @FXML
     public void initialize() {
@@ -81,8 +80,8 @@ public class OptionController {
 
     /**
      * This method converts the color from argb to hex.
-     * @param argb
-     * @return
+     * @param argb the color in argb
+     * @return the color in hex
      */
     public String toHex(String argb) {
         return "#" + argb.substring(2, 8);

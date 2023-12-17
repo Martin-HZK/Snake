@@ -202,7 +202,7 @@ public class PlayingController {
 
     /**
      * The score finally stored in json in this method
-     * @param g
+     * @param g the graphics context
      */
     public void gameOver(GraphicsContext g) {
         g.setFill(Color.RED);
