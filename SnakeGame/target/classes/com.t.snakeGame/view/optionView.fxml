@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Label?>
@@ -37,7 +36,7 @@
          <children>
             <VBox alignment="CENTER" prefHeight="304.0" prefWidth="168.0">
                <children>
-                  <Label text="Snake" >
+                  <Label text="Snake">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -74,9 +73,9 @@
                   </ColorPicker>
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="304.0" prefWidth="168.0">
+            <VBox alignment="CENTER" prefHeight="304.0" prefWidth="168.0">
                <children>
-                  <Canvas fx:id="snakeCanvas" height="136.0" width="147.0" />
+                  <Button mnemonicParsing="false" onAction="#onClickDefaultSetting" text="Default Setting" />
                </children>
             </VBox>
          </children>
