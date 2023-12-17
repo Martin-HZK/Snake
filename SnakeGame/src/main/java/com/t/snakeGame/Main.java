@@ -3,6 +3,7 @@ package com.t.snakeGame;
 import com.google.gson.JsonArray;
 import com.t.snakeGame.model.score.PlayScorePublisher;
 import com.t.snakeGame.model.score.ScorePublisher;
+import com.t.snakeGame.view.PlayingView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -38,6 +39,11 @@ public class Main extends Application {
      * The text fill.
      */
     String txtFill;
+
+    /**
+     * The snake color.
+     */
+    String snakeColor;
 
 
     /**
@@ -124,6 +130,7 @@ public class Main extends Application {
             JsonObject userSettingColor = jsonObject.getAsJsonObject("user_setting_color");
             bgColor = userSettingColor.get("bgColor").getAsString();
             txtFill = userSettingColor.get("txtFill").getAsString();
+            snakeColor = userSettingColor.get("snakeColor").getAsString();
             System.out.println(bgColor);
             System.out.println(txtFill);
 
@@ -131,7 +138,8 @@ public class Main extends Application {
             e.printStackTrace();
             System.out.println("json file not found");
         }
-        cssStyle = "-fx-text-fill: " + txtFill + ";-fx-background-color: " + bgColor;
+        cssStyle = "-fx-text-fill: " + txtFill + ";-fx-background-color: " + bgColor ;
+        PlayingView.setSnakeColor(snakeColor);
     }
 
     /**
@@ -164,6 +172,7 @@ public class Main extends Application {
         JsonObject userSettingColor = new JsonObject();
         userSettingColor.addProperty("bgColor", bgColor);
         userSettingColor.addProperty("txtFill", txtFill);
+        userSettingColor.addProperty("snakeColor", PlayingView.getSnakeColor());// this should be refactored
         userSetting.add("user_setting_color", userSettingColor);
 
         try {
