@@ -3,6 +3,9 @@ package com.t.snakeGame.controller;
 import com.google.gson.*;
 import com.t.snakeGame.Main;
 import com.t.snakeGame.model.apple.*;
+import com.t.snakeGame.model.gamePause.Command;
+import com.t.snakeGame.model.gamePause.PauseCommand;
+import com.t.snakeGame.model.gamePause.ResumeCommand;
 import com.t.snakeGame.model.score.PlayScorePublisher;
 import com.t.snakeGame.model.score.ScoreSubscriber;
 import com.t.snakeGame.model.snake.NormalSnakeCreator;
@@ -14,6 +17,8 @@ import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -45,6 +50,7 @@ public class PlayingController {
      * The timer.
      */
     AnimationTimer timer;
+
     /**
      * The counter for timer
      */
@@ -54,7 +60,7 @@ public class PlayingController {
      * The delay for timer
      */
     static final int DELAY = 10;
-
+    static boolean isPaused = false;
     /**
      * The play score publisher.
      */
@@ -65,11 +71,26 @@ public class PlayingController {
      */
     @FXML
     private Canvas playingCanvas;
+
+    /**
+     * The pause button image
+     */
+    @FXML
+    private ImageView pauseButton;
+
+    /**
+     * The resume button image
+     */
+    @FXML
+    private ImageView resumeButton;
+
     /**
      * The game scene.
      */
     @FXML
     private BorderPane gameScene;
+
+
 
     /**
      * Initialize the game with the apple and the snake. The timer is also initialized for the snake motion.
@@ -77,6 +98,15 @@ public class PlayingController {
      */
     @FXML
     public void initialize() {
+
+
+        Image pauseImage = new Image(getClass().getResourceAsStream("/images/pauseButton.jpg"));
+        pauseButton.setImage(pauseImage);
+
+
+        Image resumeImage = new Image(getClass().getResourceAsStream("/images/playButton.jpg"));
+        resumeButton.setImage(resumeImage);
+
         RedAppleCreator redAppleCreator = new RedAppleCreator();
         UnknownAppleCreator unknownAppleCreator = new UnknownAppleCreator();
         NormalSnakeCreator snakeCreator = new NormalSnakeCreator();
@@ -124,6 +154,17 @@ public class PlayingController {
             }
         };
         timer.start();
+
+        Command pauseCommand = new PauseCommand(gameScene, timer);
+        Command resumeCommand = new ResumeCommand(gameScene, timer);
+        pauseButton.setOnMouseClicked(e -> {
+            pauseCommand.execute();
+//            System.out.println("pause");
+        });
+        resumeButton.setOnMouseClicked(e -> {
+            resumeCommand.execute();
+            System.out.println("resume");
+        });
         Main.scene.setOnKeyPressed(e -> {
                     switch ((e.getCode())) {
                         case LEFT:
