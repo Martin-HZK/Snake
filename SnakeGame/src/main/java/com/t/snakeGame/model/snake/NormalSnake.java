@@ -5,12 +5,37 @@ import static com.t.snakeGame.view.PlayingView.SCREEN_WIDTH;
 import static com.t.snakeGame.view.PlayingView.UNIT_SIZE;
 import static com.t.snakeGame.view.PlayingView.GAME_UNITS;
 
+/**
+ * This class represents a normal snake object.
+ * It implements the Snake interface.
+ */
 public class NormalSnake implements Snake{
 
+
+    /**
+     * The x coordinates of the whole snake.
+     */
     private final int x[] = new int[GAME_UNITS];
+
+    /**
+     * The y coordinates of the whole snake.
+     */
     private final int y[] = new int[GAME_UNITS];
-    private int bodyParts = 6;// will be further increased as the snake eats more apples
+
+    /**
+     * The number of body parts of the snake.
+     * It will increase when the snake eats an apple.
+     */
+    private int bodyParts = 6;
+
+    /**
+     * The boolean property that indicates whether the snake is running.
+     */
     private boolean running;
+
+    /**
+     * The direction of the snake.
+     */
     private char direction;
 
 
@@ -24,15 +49,15 @@ public class NormalSnake implements Snake{
     }
 
     /**
-     * Getter for direction
-     * @return
+     * This method gets the direction of the snake.
+     * @return the direction of the snake
      */
     public char getDirection() {
         return direction;
     }
 
     /**
-     * Setter for direction
+     * This method sets the direction of the snake.
      * @param direction
      */
     public void setDirection(char direction) {
@@ -40,51 +65,68 @@ public class NormalSnake implements Snake{
     }
 
     /**
-     * Getter for bodyParts
-     * @return
+     * This method gets the number of body parts of the snake.
+     * @return the number of body parts of the snake
      */
     public int getBodyParts() {
         return bodyParts;
     }
 
     /**
-     * Setter for bodyParts
-     * @param bodyParts
+     * This method sets the length of body parts of the snake.
+     * @param bodyParts the length of body parts of the snake
      */
     public void setBodyParts(int bodyParts) {
         this.bodyParts = bodyParts;
     }
 
     /**
-     * Getter for x
-     * @return
+     * This method gets the x coordinates of the whole snake.
+     * @return the x coordinates of the snake
      */
     public int[] getX() {
         return x;
     }
+
+
     /**
-     * Getter for y
-     * @return
+     * This method gets the y coordinates of the whole snake.
+     * @return the y coordinates of the snake
      */
     public int[] getY() {
         return y;
     }
 
+    /**
+     * This method gets the running status of the snake.
+     * If the snake is running, it returns true. If the snake is not running, it returns false.
+     * @return the running status of the snake
+     */
     public boolean isRunning() {
         return running;
     }
 
 
+    /**
+     * This method gets the x coordinate of the head of the snake.
+     * @return the x coordinate of the head of the snake
+     */
     public int getHeadX() {
         return x[0];
     }
 
+    /**
+     * This method gets the y coordinate of the head of the snake.
+     * @return the y coordinate of the head of the snake
+     */
     public int getHeadY() {
         return y[0];
     }
 
 
-    // the controller needs to communicate with the model to expand the snake
+    /**
+     * This method check if the snake has collided with itself or the border.
+     */
     @Override
     public void checkCollisions() {
         //checks if head collides with body
@@ -110,12 +152,11 @@ public class NormalSnake implements Snake{
             this.running = false;
         }
 
-        // controller will deal with the issue of not running
-//        if(!this.running) {
-//            timer.stop();// we need to communicate to the controller that the game is over
-//        }
     }
 
+    /**
+     * This method moves the snake.
+     */
     @Override
     public void move(){
         for(int i = bodyParts;i>0;i--) {
