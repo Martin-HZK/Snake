@@ -13,30 +13,52 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.io.*;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Map;
-import java.util.Scanner;
 
+/**
+ * This class represents a controller for main.fxml.
+ * It defines the method for switching to info.fxml, userName.fxml, option.fxml and score.fxml.
+ */
 public class Main extends Application {
 
+
+    /**
+     * The scene.
+     */
     public static Scene scene;
+    /**
+     * The css style.
+     */
     public static String cssStyle = "-fx-text-fill: #fc310d;-fx-background-color: #000000";
+    /**
+     * The background color.
+     */
     String bgColor;
+
+    /**
+     * The text fill.
+     */
     String txtFill;
 
 
+    /**
+     * The screen width.
+     */
     static final int SCREEN_WIDTH = 1300;
+    /**
+     * The screen height.
+     */
     static final int SCREEN_HEIGHT = 750;
     public static void main(String[]args) {
         launch(args);
     }
 
+    /**
+     * This method starts the stage.
+     * @param stage the stage
+     * @throws Exception the exception
+     */
     @Override
     public void start(Stage stage) throws Exception {
-
-
         loadUserSetting(); // load user setting for color from json file
 
         PlayScorePublisher playScorePublisher = PlayScorePublisher.getInstance(); // create the global Publisher
@@ -51,23 +73,47 @@ public class Main extends Application {
         stage.show();
     }
 
+    /**
+     * This method loads the fxml file.
+     * @param fxml the fxml file
+     * @return the parent
+     * @throws IOException the io exception
+     */
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
+
+    /**
+     * This method sets the root of the scene.
+     * @param fxml the fxml file
+     * @throws IOException the io exception
+     */
     public static void setRoot(String fxml) throws IOException {
-//        String cssStyle = scene.getRoot().getStyle();
-//        System.out.println(cssStyle);
         scene.setRoot(loadFXML(fxml));
         scene.getRoot().setStyle(cssStyle);
     }
+
+    /**
+     * This method returns the scene.
+     * @return the scene
+     */
     public static Scene getScene() {
         return scene;
     }
+
+    /**
+     * This method returns the root of the scene.
+     * @return the root of the scene
+     */
     public static Parent getRoot() {
         return scene.getRoot();
     }
 
+
+    /**
+     * This method loads the user setting for the text and snake color from json file.
+     */
     public void loadUserSetting() {
         Gson gson = new Gson();
         try {
@@ -88,6 +134,11 @@ public class Main extends Application {
         cssStyle = "-fx-text-fill: " + txtFill + ";-fx-background-color: " + bgColor;
     }
 
+    /**
+     * This method saves the user setting to json file.
+     * @param txtFill the text fill
+     * @param bgColor the background color
+     */
     public static void saveUserSetting(String txtFill, String bgColor) {
         Gson gson = new Gson();
         //Invariants
@@ -104,10 +155,6 @@ public class Main extends Application {
             e.printStackTrace();
             System.out.println("File not found");
         }
-
-
-
-
 
         JsonObject userSetting = new JsonObject();
         userSetting.add("default_color", defaultUserSettingColor);
