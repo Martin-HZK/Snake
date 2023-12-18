@@ -157,7 +157,6 @@ public class Main extends Application {
             userScore = jsonObject.getAsJsonArray("user_score");
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("File not found");
         }
 
         JsonObject userSetting = new JsonObject();
@@ -177,7 +176,6 @@ public class Main extends Application {
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("json file not found");
         }
     }
 }

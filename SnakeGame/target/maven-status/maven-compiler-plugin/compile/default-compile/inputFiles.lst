@@ -1,4 +1,3 @@
-D:\Nottingham\Y3\ae2dms-cw-20411218\SnakeGame\src\main\java\com\t\snakeGame\view\ScoreView.java
 D:\Nottingham\Y3\ae2dms-cw-20411218\SnakeGame\src\main\java\com\t\snakeGame\model\apple\RedAppleCreator.java
 D:\Nottingham\Y3\ae2dms-cw-20411218\SnakeGame\src\main\java\com\t\snakeGame\model\soundStrategy\Context.java
 D:\Nottingham\Y3\ae2dms-cw-20411218\SnakeGame\src\main\java\com\t\snakeGame\model\gamePause\ResumeCommand.java
@@ -30,7 +29,6 @@ D:\Nottingham\Y3\ae2dms-cw-20411218\SnakeGame\src\main\java\com\t\snakeGame\mode
 D:\Nottingham\Y3\ae2dms-cw-20411218\SnakeGame\src\main\java\com\t\snakeGame\view\PlayingView.java
 D:\Nottingham\Y3\ae2dms-cw-20411218\SnakeGame\src\main\java\com\t\snakeGame\model\eatChecker\UnknownEatChecker.java
 D:\Nottingham\Y3\ae2dms-cw-20411218\SnakeGame\src\main\java\com\t\snakeGame\model\soundStrategy\Strategy.java
-D:\Nottingham\Y3\ae2dms-cw-20411218\SnakeGame\src\main\java\com\t\snakeGame\view\InfoView.java
 D:\Nottingham\Y3\ae2dms-cw-20411218\SnakeGame\src\main\java\module-info.java
 D:\Nottingham\Y3\ae2dms-cw-20411218\SnakeGame\src\main\java\com\t\snakeGame\model\snake\NormalSnake.java
 D:\Nottingham\Y3\ae2dms-cw-20411218\SnakeGame\src\main\java\com\t\snakeGame\controller\MainController.java

@@ -160,7 +160,6 @@ public class NormalSnake implements Snake{
         }
         //check if head touches bottom border
         if(y[0] > CANVAS_HEIGHT - 2*UNIT_SIZE) {
-            System.out.println(y[0]);
             this.running = false;
         }
 

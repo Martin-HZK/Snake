@@ -129,7 +129,6 @@ public class BonusApple implements Apple{
         if (isEaten.get() == true) {
             newApple();
             setApplesEaten(getApplesEaten() + 3);
-            System.out.println("Bonus apple eaten");
             isEaten.set(false);
             Thread bonusThread = new Thread(() -> {
                     soundPlay.executeStrategy();

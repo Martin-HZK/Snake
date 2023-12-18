@@ -9,26 +9,16 @@ import com.t.snakeGame.model.gamePause.Command;
 import com.t.snakeGame.model.gamePause.PauseCommand;
 import com.t.snakeGame.model.gamePause.ResumeCommand;
 import com.t.snakeGame.model.score.PlayScorePublisher;
-import com.t.snakeGame.model.score.ScoreSubscriber;
 import com.t.snakeGame.model.snake.NormalSnakeCreator;
 import com.t.snakeGame.model.snake.NormalSnake;
 import com.t.snakeGame.view.PlayingView;
 import javafx.animation.AnimationTimer;
-import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.util.Duration;
 
-import java.io.IOException;
-
-import static com.t.snakeGame.view.PlayingView.*;
 
 /**
  * This class represents a controller for playingView.fxml.
@@ -98,6 +88,7 @@ public class PlayingController {
     private BorderPane gameScene;
 
 
+    PlayingView playingView;
     /**
      * Initialize the game with the apple and the snake. The timer is also initialized for the snake motion.
      * Accept the key input from the user.
@@ -119,6 +110,7 @@ public class PlayingController {
         BonusAppleCreator bonusAppleCreator = new BonusAppleCreator();
         NormalSnakeCreator snakeCreator = new NormalSnakeCreator();
 
+        playingView = new PlayingView(this);
 
         gameScene.setFocusTraversable(true);
         snake = snakeCreator.createSnake();
@@ -127,20 +119,7 @@ public class PlayingController {
         unknownApple = unknownAppleCreator.createApple(1000, 550);
         bonusApple = bonusAppleCreator.createApple(400, 400);
         ScoreController.playingScore.bind(apple.applesEaten);
-        GraphicsContext gc = playingCanvas.getGraphicsContext2D();
-        gc.setFill(Color.BLACK);
-        gc.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-
-        gc.setFill(Color.RED);
-        gc.fillOval(apple.getAppleX(), apple.getAppleY(), UNIT_SIZE, UNIT_SIZE);
-
-        gc.setFill(Color.YELLOW);
-        gc.fillOval(bonusApple.getAppleX(), bonusApple.getAppleY(), UNIT_SIZE, UNIT_SIZE);
-
-        gc.setFill(Color.PURPLE);
-        gc.fillOval(unknownApple.getAppleX(), unknownApple.getAppleY(), UNIT_SIZE, UNIT_SIZE);
-
-
+        playingView.initializeCanvas();
         timer = new AnimationTimer() {
             @Override
             public void handle(long l) {
@@ -156,9 +135,9 @@ public class PlayingController {
                         unknownEatChecker.check();
                         bonusEatChecker.check();
 
-                        gc.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+                        playingView.clearWindow();
                     }
-                    draw(gc);
+                    playingView.draw(timer);
 
                     if (count > DELAY)
                         count = 0;
@@ -204,90 +183,80 @@ public class PlayingController {
     }
 
     /**
-     * Draw the snake and the apple.
-     *
-     * @param g the graphics context
+     * This is the getter method for the snake.
      */
-    public void draw(GraphicsContext g) {
-        Color snakeColor = Color.valueOf(PlayingView.getSnakeColor());
-        Color snakeTail;
-        if (snakeColor == Color.GREEN) {
-            snakeTail = new Color(45.0 / 255, 180.0 / 255, 0, 1.0);
-        } else if (snakeColor == Color.RED) {
-            snakeTail = new Color(180.0 / 255, 0, 45 / 255, 1.0);
-        } else if (snakeColor == Color.BLUE) {
-            snakeTail = new Color(0, 45 / 255, 180.0 / 255, 1.0);
-        } else {
-            snakeTail = snakeColor.darker();
-        }
-        if (snake.isRunning()) { // do we need to change the name of the method
-            g.setFill(Color.RED);
-            g.fillOval(apple.getAppleX(), apple.getAppleY(), UNIT_SIZE, UNIT_SIZE);
-
-            g.setFill(Color.YELLOW);
-            g.fillOval(bonusApple.getAppleX(), bonusApple.getAppleY(), UNIT_SIZE, UNIT_SIZE);
-
-            g.setFill(Color.PURPLE);
-            g.fillOval(unknownApple.getAppleX(), unknownApple.getAppleY(), UNIT_SIZE, UNIT_SIZE);
-            for (int i = 0; i < snake.getBodyParts(); i++) {
-                if (i == 0) {
-                    g.setFill(snakeColor);
-
-                    g.fillRect(snake.getX()[i], snake.getY()[i], UNIT_SIZE, UNIT_SIZE); // ugly coding!!!!!
-                } else {
-
-                    g.setFill(snakeTail);
-                    g.fillRect(snake.getX()[i], snake.getY()[i], UNIT_SIZE, UNIT_SIZE);
-                }
-            }
-            g.setFill(Color.RED);
-            g.setFont(Font.font("Ink Free", FontWeight.BOLD, 40));
-            totalScore = apple.getApplesEaten() + unknownApple.getApplesEaten() + bonusApple.getApplesEaten();
-            g.fillText("Score: " + totalScore, (CANVAS_WIDTH - ("Score: " + apple.getApplesEaten()).length() * 10) / 2, g.getFont().getSize());
-        } else {
-            gameOver(g);
-            timer.stop();
-        }
+    public NormalSnake getSnake() {
+        return snake;
     }
 
-
     /**
-     * Switch to score window
-     *
-     * @throws IOException the io exception
+     * This is the setter method for the snake.
      */
-    public void switchToScore() throws IOException {
-        Main.setRoot("/com.t.snakeGame/view/scoreView");
+    public void setSnake(NormalSnake snake) {
+        this.snake = snake;
     }
 
+    /**
+     * This is the getter method for the red apple.
+     */
+    public RedApple getApple() {
+        return apple;
+    }
 
     /**
-     * The score finally stored in json in this method
-     *
-     * @param g the graphics context
+     * This is the setter method for the red apple.
      */
-    public void gameOver(GraphicsContext g) {
-        g.setFill(Color.RED);
-        g.setFont(Font.font("Ink Free", FontWeight.BOLD, 40));// Font.font("Ink Free", FontWeight.BOLD, 40)
-        g.fillText("Score: " + totalScore, (CANVAS_WIDTH - ("Score: " + this.apple.getApplesEaten()).length() * 10) / 2, g.getFont().getSize());
-        g.setFill(Color.RED);
-        g.setFont(Font.font("Ink Free", FontWeight.BOLD, 75));
-        g.fillText("Game Over lol get rekt", (CANVAS_WIDTH - ("Game Over lol get rekt").length() * 35) / 2, CANVAS_HEIGHT / 2);
-        PauseTransition pause = new PauseTransition(Duration.seconds(3)); // 3 seconds
+    public void setApple(RedApple apple) {
+        this.apple = apple;
+    }
 
-        pause.setOnFinished(event -> {
+    /**
+     * This is the getter method for the unknown apple.
+     */
+    public UnknownApple getUnknownApple() {
+        return unknownApple;
+    }
 
-            ScoreSubscriber newScore = playScorePublisher.getLastSubscriber();
-            playScorePublisher.updateLastScore(Integer.toString(totalScore));
-            newScore.update();// this is for storing into the json file
-            playScorePublisher.addSubscriber(newScore);
-            try {
-                switchToScore();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        pause.play();
+    /**
+     * This is the setter method for the unknown apple.
+     */
+    public void setUnknownApple(UnknownApple unknownApple) {
+        this.unknownApple = unknownApple;
+    }
+
+    /**
+     * This is the getter method for the bonus apple.
+     */
+    public BonusApple getBonusApple() {
+        return bonusApple;
+    }
+
+    /**
+     * This is the setter method for the bonus apple.
+     */
+    public void setBonusApple(BonusApple bonusApple) {
+        this.bonusApple = bonusApple;
+    }
+
+    /**
+     * This is the getter method for the total score.
+     */
+    public int getTotalScore() {
+        return totalScore;
+    }
+
+    /**
+     * This is the setter method for the total score.
+     */
+    public void setTotalScore(int totalScore) {
+        this.totalScore = totalScore;
+    }
+
+    /**
+     * This is the getter method for the playing canvas.
+     */
+    public Canvas getPlayingCanvas() {
+        return playingCanvas;
     }
 
 }

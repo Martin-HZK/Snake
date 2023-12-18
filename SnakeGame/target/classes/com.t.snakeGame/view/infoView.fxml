@@ -38,10 +38,13 @@
             <ImageView fx:id="snakeGame" fitHeight="221.0" fitWidth="427.0" pickOnBounds="true" preserveRatio="true" />
             <VBox alignment="TOP_CENTER" prefHeight="398.0" prefWidth="360.0">
                <children>
-                  <Label text="Apple Category" textFill="#d20a0a">
+                  <Label text="Apple Category">
                      <font>
                         <Font size="30.0" />
                      </font>
+                     <style>
+                        -fx-text-fill: inherit;
+                        </style>
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
@@ -49,18 +52,24 @@
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Circle fill="YELLOW" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Label text="Bonus Apple" textFill="#ed0808">
+                        <Label text="Bonus Apple">
                            <font>
                               <Font size="20.0" />
                            </font>
+                           <style>
+                              -fx-text-fill: inherit;
+                           </style>
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
                         </Label>
-                        <Label text="3pts" textFill="RED">
+                        <Label text="3pts">
                            <font>
                               <Font size="20.0" />
                            </font>
+                           <style>
+                              -fx-text-fill: inherit;
+                           </style>
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -70,18 +79,24 @@
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Circle fill="RED" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Label text="Red Apple" textFill="#ed0808">
+                        <Label text="Red Apple">
                            <font>
                               <Font size="20.0" />
                            </font>
+                           <style>
+                              -fx-text-fill: inherit;
+                           </style>
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
                         </Label>
-                        <Label text="3pts" textFill="RED">
+                        <Label text="3pts">
                            <font>
                               <Font size="20.0" />
                            </font>
+                           <style>
+                              -fx-text-fill: inherit;
+                           </style>
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -91,18 +106,24 @@
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Circle fill="#7e00ff" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Label text="Unknown Apple" textFill="#ed0808">
+                        <Label text="Unknown Apple">
                            <font>
                               <Font size="20.0" />
                            </font>
+                           <style>
+                              -fx-text-fill: inherit;
+                           </style>
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
                         </Label>
-                        <Label text="-5pts/6pts" textFill="RED">
+                        <Label text="-5pts/6pts">
                            <font>
                               <Font size="20.0" />
                            </font>
+                           <style>
+                              -fx-text-fill: inherit;
+                           </style>
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
