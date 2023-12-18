@@ -34,7 +34,6 @@ public class BonusEatChecker implements Checker{
      * The bonus apple will be set to be eaten.
      * The bonus apple will be checked.
      * The snake will check collisions.
-     * @return true if the snake eats the bonus apple, false otherwise
      */
     @Override
     public void check() {

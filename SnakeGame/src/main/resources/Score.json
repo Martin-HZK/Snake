@@ -1,12 +1,24 @@
 {
   "scores": [
     {
-      "name": "",
-      "score": "0"
+      "name": "martin",
+      "score": "4"
+    },
+    {
+      "name": "m",
+      "score": "1"
+    },
+    {
+      "name": "mmm",
+      "score": "5"
     },
     {
       "name": "",
-      "score": "0"
+      "score": "6"
+    },
+    {
+      "name": "",
+      "score": "-4"
     }
   ]
 }

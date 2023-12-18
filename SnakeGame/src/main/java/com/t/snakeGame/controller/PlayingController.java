@@ -13,6 +13,8 @@ import com.t.snakeGame.model.snake.NormalSnakeCreator;
 import com.t.snakeGame.model.snake.NormalSnake;
 import com.t.snakeGame.view.PlayingView;
 import javafx.animation.AnimationTimer;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
@@ -43,7 +45,7 @@ public class PlayingController {
      */
     private BonusApple bonusApple;
 
-    private int totalScore = 0;
+    private IntegerProperty totalScore = new SimpleIntegerProperty(0);;
     /**
      * The timer.
      */
@@ -118,7 +120,7 @@ public class PlayingController {
         apple = redAppleCreator.createApple(200, 200);
         unknownApple = unknownAppleCreator.createApple(1000, 550);
         bonusApple = bonusAppleCreator.createApple(400, 400);
-        ScoreController.playingScore.bind(apple.applesEaten);
+        ScoreController.playingScore.bind(totalScore);
         playingView.initializeCanvas();
         timer = new AnimationTimer() {
             @Override
@@ -242,14 +244,14 @@ public class PlayingController {
      * This is the getter method for the total score.
      */
     public int getTotalScore() {
-        return totalScore;
+        return totalScore.get();
     }
 
     /**
      * This is the setter method for the total score.
      */
     public void setTotalScore(int totalScore) {
-        this.totalScore = totalScore;
+        this.totalScore.set(totalScore);
     }
 
     /**

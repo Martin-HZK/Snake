@@ -34,7 +34,6 @@ public class NormalEatChecker implements Checker{
      * The red apple will be set to be eaten.
      * The red apple will be checked.
      * The snake will check collisions.
-     * @return true if the snake eats the red apple, false otherwise
      */
     @Override
     public void check() {

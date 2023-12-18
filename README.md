@@ -55,3 +55,59 @@ The strategy pattern is for playing different sound when eating apples. *Strateg
 Open-Closed Principle & Dependency Inversion Principle
 
 The command pattern is used for gamePause function. The *Command* interface wrap a *execute()* method and *PauseCommand* & *ResumeCommand* are 2 concrete class. The concrete class take the target borderPane and timer as parameter and execute the timer's play and stop method.
+
+## Tests
+#### Function: redappleCreator.createApple()
+|ID|Type|Description|Inputs|Expected Outcome|Test Outcome|Passed/Failed|
+|----|------|---------|----------------|------------|------|----|
+| N_1|[Normal]|red apples are created on the correct x index ||200|200|Passed
+| N_2|[Normal]|red apples are created on the correct y index ||200|200|Passed
+
+#### Function: bonusappleCreator.createApple()
+|ID|Type|Description|Inputs|Expected Outcome|Test Outcome|Passed/Failed|
+|----|------|---------|----------------|------------|------|----|
+| N_1|[Normal]|bonus apples are created on the correct x index ||200|200|Passed
+| N_2|[Normal]|bonus apples are created on the correct y index ||200|200|Passed
+
+#### Function: unknownappleCreator.createApple()
+|ID|Type|Description|Inputs|Expected Outcome|Test Outcome|Passed/Failed|
+|----|------|---------|----------------|------------|------|----|
+| N_1|[Normal]|unknown apples are created on the correct x index ||200|200|Passed
+| N_2|[Normal]|unknown apples are created on the correct y index ||200|200|Passed
+
+#### Function: redApple.checkApple()
+|ID|Type|Description|Inputs|Expected Outcome|Test Outcome|Passed/Failed|
+|----|------|---------|----------------|------------|------|----|
+| N_1|[Normal]|snake start length ||6|6|Passed
+| N_2|[Normal]|new red apple created,is eated reset to false ||false|false|Passed
+| N_1|[Normal]|snake new length ||7|7|Passed
+
+#### Function: bonusApple.checkApple()
+|ID|Type|Description|Inputs|Expected Outcome|Test Outcome|Passed/Failed|
+|----|------|---------|----------------|------------|------|----|
+| N_1|[Normal]|snake start length ||6|6|Passed
+| N_2|[Normal]|new bonus apple created,is eated reset to false ||false|false|Passed
+| N_1|[Normal]|snake new length ||7|7|Passed
+
+#### Function: bonusApple.checkApple()
+|ID|Type|Description|Inputs|Expected Outcome|Test Outcome|Passed/Failed|
+|----|------|---------|----------------|------------|------|----|
+| N_1|[Normal]|snake start length ||6|6|Passed
+| N_2|[Normal]|new bonus apple created,is eated reset to false ||false|false|Passed
+| N_1|[Normal]|snake new length ||7|7|Passed
+
+#### Function: redApple.checkApple()
+|ID|Type|Description|Inputs|Expected Outcome|Test Outcome|Passed/Failed|
+|----|------|---------|----------------|------------|------|----|
+| N_1|[Normal]|snake start length ||6|6|Passed
+| N_2|[Normal]|new red apple created,is eated reset to false ||false|false|Passed
+| N_1|[Normal]|snake new length ||7|7|Passed
+
+
+#### Function: updatePlayerScore()
+|ID|Type|Description|Inputs|Expected Outcome|Test Outcome|Passed/Failed|
+|----|------|---------|----------------|------------|------|----|
+| N_1|[Normal]|score in the current round ||20|20|Passed
+| N_2|[Normal]|add subscriber with score 30 ||30|30|Passed
+
+

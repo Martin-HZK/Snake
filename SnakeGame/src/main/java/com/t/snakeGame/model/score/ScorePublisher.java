@@ -11,6 +11,5 @@ public interface ScorePublisher {
      * @param scoreSubscriber the subscriber to be added
      */
     void addSubscriber(ScoreSubscriber scoreSubscriber);
-//    void removeSubscriber(ScoreSubscriber scoreSubscriber);
-//    void notifySubscribers();
+
 }

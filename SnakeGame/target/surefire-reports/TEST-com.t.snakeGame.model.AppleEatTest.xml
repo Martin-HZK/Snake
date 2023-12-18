@@ -44,7 +44,7 @@
     <property name="java.class.path" value="D:\intelijidea\IntelliJ IDEA 2022.2.3\plugins\maven\lib\maven3\boot\plexus-classworlds-2.6.0.jar;D:\intelijidea\IntelliJ IDEA 2022.2.3\plugins\maven\lib\maven3\boot\plexus-classworlds.license"/>
     <property name="java.vm.specification.version" value="16"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version=2022.2.3 install"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version=2022.2.3 test"/>
     <property name="java.home" value="C:\Program Files\Java\jdk-16"/>
     <property name="user.language" value="zh"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -59,7 +59,7 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.t.snakeGame.model.AppleEatTest" name="testEatBonusApple" time="0.001"/>
+  <testcase classname="com.t.snakeGame.model.AppleEatTest" name="testEatBonusApple" time="0"/>
   <testcase classname="com.t.snakeGame.model.AppleEatTest" name="testEatUnknownApple" time="0"/>
-  <testcase classname="com.t.snakeGame.model.AppleEatTest" name="testEatRedApple" time="0"/>
+  <testcase classname="com.t.snakeGame.model.AppleEatTest" name="testEatRedApple" time="0.001"/>
 </testsuite>

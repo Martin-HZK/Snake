@@ -57,12 +57,12 @@ public class PlayingView extends BorderPane {
     /**
      * This is the height of the canvas.
      */
-    public static final int CANVAS_HEIGHT = 700;
+    public static final int CANVAS_HEIGHT = 750;
 
     /**
      * This is the concrete size of each unit in the canvas.
      */
-    public static final int UNIT_SIZE = 25;
+    public static final int UNIT_SIZE = 50;
 
     /**
      * This is the number of units in the canvas.
@@ -135,13 +135,11 @@ public class PlayingView extends BorderPane {
             g.setFill(Color.RED);
             g.setFont(Font.font("Ink Free", FontWeight.BOLD, 40));
             playingController.setTotalScore(redApple.getApplesEaten() + unknownApple.getApplesEaten() + bonusApple.getApplesEaten());
-//            totalScore =
             g.fillText("Score: " + playingController.getTotalScore(), (CANVAS_WIDTH - ("Score: " + redApple.getApplesEaten()).length() * 10) / 2, g.getFont().getSize());
         } else {
             gameOver(g, playingController.getTotalScore());
             timer.stop();
         }
-//        return totalScore;
     }
 
 

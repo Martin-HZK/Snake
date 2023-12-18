@@ -34,7 +34,6 @@ public class UnknownEatChecker implements Checker{
      * The unknown apple will be set to be eaten.
      * The unknown apple will be checked.
      * The snake will check collisions.
-     * @return true if the snake eats the unknown apple, false otherwise
      */
     @Override
     public void check() {

@@ -11,7 +11,6 @@ import com.t.snakeGame.model.snake.Snake;
 public interface Checker {
     /**
      * This method checks whether the snake eats the apple.
-     * @return true if the snake eats the apple, false otherwise
      */
     void check();
 }

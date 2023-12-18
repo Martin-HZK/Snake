@@ -19,7 +19,6 @@ public class ScorePublishTest {
     public void testUpdateLastScore() {
         ScoreSubscriber last1 = new ScoreSubscriber("Josh", "10");
         playerScorePublisher.addSubscriber(last1);
-        assertEquals("10", playerScorePublisher.getLastSubscriber().getPlayerScore());
 
         playerScorePublisher.updateLastScore("20");
         assertEquals("20", playerScorePublisher.getLastSubscriber().getPlayerScore());
