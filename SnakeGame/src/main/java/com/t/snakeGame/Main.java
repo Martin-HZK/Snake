@@ -131,12 +131,8 @@ public class Main extends Application {
             bgColor = userSettingColor.get("bgColor").getAsString();
             txtFill = userSettingColor.get("txtFill").getAsString();
             snakeColor = userSettingColor.get("snakeColor").getAsString();
-            System.out.println(bgColor);
-            System.out.println(txtFill);
-
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("json file not found");
         }
         cssStyle = "-fx-text-fill: " + txtFill + ";-fx-background-color: " + bgColor ;
         PlayingView.setSnakeColor(snakeColor);

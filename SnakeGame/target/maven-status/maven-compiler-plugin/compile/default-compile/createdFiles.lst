@@ -7,7 +7,6 @@ com\t\snakeGame\controller\PlayingController$2.class
 com\t\snakeGame\view\ScoreView.class
 com\t\snakeGame\controller\InfoController.class
 com\t\snakeGame\view\InfoView.class
-com\t\snakeGame\view\OptionView.class
 com\t\snakeGame\controller\MainController.class
 com\t\snakeGame\model\snake\Snake.class
 com\t\snakeGame\controller\OptionController.class

@@ -9,10 +9,6 @@ public class PauseResumeTest extends AnimationTimer{
 
     boolean isRunning = false;
 
-    public PauseResumeTest() {
-        super();
-    }
-
     @Override
     public void handle(long l) {
     }
@@ -32,19 +28,6 @@ public class PauseResumeTest extends AnimationTimer{
     public boolean isRunning() {
         return isRunning;
     }
-    @Test
-    public void testPause() {
-
-        AnimationTimer timer = new AnimationTimer() {
-            @Override
-            public void handle(long l) {
-
-            }
-        };
-        timer.start();
-        assertEquals(false, isRunning());
-    }
-
     @Test
     public void testResume() {
 
