@@ -85,10 +85,12 @@ public class UnknownApple implements Apple{
 
     /**
      * This method generates a random new unknown apple.
+     * The bonus/bad property will be generated randomly.
      */
     public void newApple(){
-        this.appleX.set(random.nextInt((int)(SCREEN_WIDTH/UNIT_SIZE))*UNIT_SIZE);
-        this.appleY.set(random.nextInt((int)(SCREEN_HEIGHT/UNIT_SIZE))*UNIT_SIZE);
+        this.appleX.set(random.nextInt((int)(CANVAS_WIDTH/UNIT_SIZE))*UNIT_SIZE);
+        this.appleY.set(random.nextInt((int)(CANVAS_HEIGHT/UNIT_SIZE))*UNIT_SIZE);
+        setBonus(random.nextBoolean());
     }
 
     /**
@@ -155,14 +157,14 @@ public class UnknownApple implements Apple{
             Thread soundThread;
 
             if (isBonus) {
-                applesEaten.set(applesEaten.get() + 10);
+                setApplesEaten(getApplesEaten() + 5);
                 soundPlay.setStrategy(new PlayBonusEatSound());
                 soundThread = new Thread(() -> {
                     soundPlay.executeStrategy();
                 });
             }else {
                 // this is a bad apple
-                applesEaten.set(applesEaten.get() - 3);
+                setApplesEaten(getApplesEaten() - 6);
                 soundPlay.setStrategy(new PlayBadEatSound());
                 soundThread = new Thread(() -> {
                     soundPlay.executeStrategy();
