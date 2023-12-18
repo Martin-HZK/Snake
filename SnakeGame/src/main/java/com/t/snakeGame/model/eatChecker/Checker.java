@@ -13,5 +13,5 @@ public interface Checker {
      * This method checks whether the snake eats the apple.
      * @return true if the snake eats the apple, false otherwise
      */
-    boolean check();
+    void check();
 }

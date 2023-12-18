@@ -37,14 +37,13 @@ public class NormalEatChecker implements Checker{
      * @return true if the snake eats the red apple, false otherwise
      */
     @Override
-    public boolean check() {
+    public void check() {
         if (snake.getHeadX() == apple.getAppleX() && snake.getHeadY() == apple.getAppleY()) {
             apple.setIsEaten(true);
             snake.setBodyParts(snake.getBodyParts() + 1);
-            apple.checkApple();
-            snake.checkCollisions();
-            return true;
+
         }
-        return false;
+        apple.checkApple();
+        snake.checkCollisions();
     }
 }

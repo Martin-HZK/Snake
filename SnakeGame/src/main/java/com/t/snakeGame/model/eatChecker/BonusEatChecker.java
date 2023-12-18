@@ -37,14 +37,12 @@ public class BonusEatChecker implements Checker{
      * @return true if the snake eats the bonus apple, false otherwise
      */
     @Override
-    public boolean check() {
+    public void check() {
         if (snake.getHeadX() == bonusApple.getAppleX() && snake.getHeadY() == bonusApple.getAppleY()) {
             bonusApple.setIsEaten(true);
             snake.setBodyParts(snake.getBodyParts() + 1);
-            bonusApple.checkApple();
-            snake.checkCollisions();
-            return true;
         }
-        return false;
+        bonusApple.checkApple();
+        snake.checkCollisions();
     }
 }

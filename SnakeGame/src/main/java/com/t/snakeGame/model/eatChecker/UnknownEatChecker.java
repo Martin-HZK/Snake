@@ -37,14 +37,12 @@ public class UnknownEatChecker implements Checker{
      * @return true if the snake eats the unknown apple, false otherwise
      */
     @Override
-    public boolean check() {
+    public void check() {
         if (snake.getHeadX() == unknownApple.getAppleX() && snake.getHeadY() == unknownApple.getAppleY()) {
             unknownApple.setIsEaten(true);
             snake.setBodyParts(snake.getBodyParts() + 1);
-            unknownApple.checkApple();
-            snake.checkCollisions();
-            return true;
         }
-        return false;
+        unknownApple.checkApple();
+        snake.checkCollisions();
     }
 }
