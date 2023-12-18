@@ -14,7 +14,7 @@ public class PlayBadEatSound implements Strategy{
      */
     @Override
     public void playSound() {
-            Media bonus = new Media(new File("src/main/resources/sound/badEat.wav").toURI().toString());
+            Media bonus = new Media(new File("src/main/resources/sound/badEat.mp3").toURI().toString());
             MediaPlayer bonusPlayer = new MediaPlayer(bonus);
             bonusPlayer.play();
     }
