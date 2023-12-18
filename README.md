@@ -1,27 +1,57 @@
 # AE2DMS-CW-20411218
 
-``` text
-Start Date: Oct.30th
-Due Date:   Dec.12th(12:00 noon)
-```
+## Changes/Additions to the game
 
-## About the project
+1. Adding different types of apples
+   * Red - normal apple, 1pts
+   * Yellow - bonus apple, 3pts
+   * Purple - Unknown apple, -6pts or 5pts randomly
+2. Adding different sound effect when eating different apples.
+3. Adding the game pause/resume function when playing the game.This serves for the situation when user need to pause to plan the route.
+4. Adding the user selection of the different **themes** and **snake color** with color pane. Every time the user restart game, the game will start with the previous user setting. The user is also allowed to choose default setting.
+5. Adding the username input window. Before each round, the user is asked to input its name and it will be further displayed with its playing scores.
+6. Adding the score board for the user to view history scores. The scores will be stored with the user's name. The user can also click to clear the score board.
+   Additionally, each round the user will get the level title, including rookie, skilled, expert,master, together with different snake image.
 
-This coursework centers around the maintenance and expansion of a re-imagined ren-
-dition of the timeless arcade game, ***Snake***. More information about the original Snake
-game and its background can be found via Wikipedia. While the current implementa-
-tion remains unfinished, it can be made functional through proper configuration. Your
-objective in this coursework is to refactor the existing code in accordance with the
-design principles and patterns of a maintainable software.
+## Design patterns applied
 
-## Marking Rubic
+### Observer pattern
 
-* [Bryan] **20%**: Demonstrate proficient usage of Git, including (1) Provide clear and
-descriptive commit messages; (2) Perform pushing, branching, and merging
-effectively; (3) Utilize issues, lists, and milestones in a high-quality manner; (4)
-Include a suitable .gitignore file.
-* [Heng] **40%**: Code refactoring, demonstrating effective improvements to the codebase. 
-* [Heng] **10%**: Implementing valuable additions to the game.
-* [Bryan] **20%**: Thorough documentation, including a comprehensive README.md,
-well-documented Javadocs, and a clear class diagram.
-* [Bryan] **10%**: Submission of a descriptive video that showcases the work done.
+#### Design principle
+
+Open-Closed Principle & Dependency Inversion Principle
+
+I apply the observer pattern to the process of updating scores. *ScorePublisher* and *Subscriber* are two interfaces.*PlayScorePublisher* and *ScoreSubscriber* are corresponding implementation of the interface. The subscriber has the *update()* method to update the score to the json file. The publisher has the *addSubscriber()* method to store the subscriber in an arrayList for reference. These publisher is used in the usernameInput&playing window to collect the new scoreSubscriber(i.e. score). <u>When the round finish, the publisher will update the subscriber with the score.</u>
+
+### Factory pattern
+
+#### Design principle
+
+Open-Closed Principle & Dependency Inversion Principle
+
+The factory pattern is used for creating different types of apples. *Apple* interface is included with the *checkApple()* method. We have an abstract class as the *AppleCreator*. Then we will have different apples and different apple creator. In the application we can avoid using the constructor straightly.
+
+### Singleton pattern
+
+#### Design principle
+
+Open-Closed principle & Single Responsibility Principle
+
+I apply the singleton pattern to the PlayScorePublisher. As we will only have 1 Publisher in the game to track all the scoreSubscriber, we set the PlayScorePublisher to static inside the *PlayScorePublisher* class. The *getInstance()* will always return the publisher if not null. If null, instantiate one.
+
+
+### Strategy pattern
+
+#### Design principle
+
+Open-Closed principle
+
+The strategy pattern is for playing different sound when eating apples. *Strategy* interface wrap a method *playSound()* and 3 class all implements it to create 3 different sounds. We also have a *Context* class with *setStrategy()* and *executeStrategy*. In the playingController, for different apples eaten, we will set different sound-play strategy to play sound.
+
+### Command pattern
+
+#### Design principle
+
+Open-Closed Principle & Dependency Inversion Principle
+
+The command pattern is used for gamePause function. The *Command* interface wrap a *execute()* method and *PauseCommand* & *ResumeCommand* are 2 concrete class. The concrete class take the target borderPane and timer as parameter and execute the timer's play and stop method.
