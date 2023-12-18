@@ -54,7 +54,6 @@ public class PlayScorePublisher implements ScorePublisher {
     public void updateLastScore(String score) {
        ScoreSubscriber last = getLastSubscriber();
        last.setPlayerScore(score);// redefining score, otherwise it will be 0
-//       last.setPlayerName(playerName);
     }
 
     /**

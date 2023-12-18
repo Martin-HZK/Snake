@@ -18,6 +18,9 @@ public class PlayingView extends BorderPane {
         return snakeColor;
     }
 
+    public static void setSnakeColor(String snakeColor) {
+        PlayingView.snakeColor = snakeColor;
+    }
 
     private static String snakeColor = "0x00FF00FF";
     public static final int SCREEN_WIDTH = 1300;
@@ -27,5 +30,6 @@ public class PlayingView extends BorderPane {
     public static final int UNIT_SIZE = 25;
 
     public static final int GAME_UNITS = (CANVAS_WIDTH*CANVAS_HEIGHT)/(UNIT_SIZE*UNIT_SIZE);
+
 
 }

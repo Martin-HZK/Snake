@@ -40,7 +40,6 @@ public class NormalSnake implements Snake{
      * Constructor for Snake class
      */
     public NormalSnake() {
-        // do nothing
         this.running = true;
         this.direction = 'R';
     }
@@ -120,6 +119,21 @@ public class NormalSnake implements Snake{
         return y[0];
     }
 
+    /**
+     * This method sets the x coordinate of the head of the snake.
+     * @param x the x coordinate of the head of the snake
+     */
+    public void setHeadX(int x) {
+        this.x[0] = x;
+    }
+
+    /**
+     * This method sets the y coordinate of the head of the snake.
+     * @param y the y coordinate of the head of the snake
+     */
+    public void setHeadY(int y) {
+        this.y[0] = y;
+    }
 
     /**
      * This method check if the snake has collided with itself or the border.
