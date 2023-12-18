@@ -19,12 +19,6 @@ public class InfoView {
     }
 
 
-//    private static Parent loadFXML(String fxml) throws IOException {
-//        FXMLLoader fxmlLoader = new FXMLLoader(PlayingView.class.getResource(fxml + ".fxml"));
-//        return fxmlLoader.load();
-//    }
-//    public static void setRoot(String fxml) throws IOException {
-//        infoScene.setRoot(loadFXML(fxml));
-//    }
+
 
 }

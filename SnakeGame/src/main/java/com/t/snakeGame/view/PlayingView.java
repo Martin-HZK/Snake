@@ -18,14 +18,8 @@ public class PlayingView extends BorderPane {
         return snakeColor;
     }
 
-    public static void setSnakeColor(String snakeColor) {
-        PlayingView.snakeColor = snakeColor;
-    }
 
     private static String snakeColor = "0x00FF00FF";
-//    private MainController controller;
-    private Stage playingStage;
-    private static Scene mainScene;
     public static final int SCREEN_WIDTH = 1300;
     public static final int SCREEN_HEIGHT = 750;
     public static final int CANVAS_WIDTH = 1300;
@@ -33,23 +27,5 @@ public class PlayingView extends BorderPane {
     public static final int UNIT_SIZE = 25;
 
     public static final int GAME_UNITS = (CANVAS_WIDTH*CANVAS_HEIGHT)/(UNIT_SIZE*UNIT_SIZE);
-
-    public PlayingView(RedApple newApple, NormalSnake newSnake) throws Exception{
-        apple = newApple;
-        snake = newSnake;
-
-        StackPane stackPane = new StackPane();
-
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/com.t.snakeGame/view/playingView.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
-
-
-        playingStage.setTitle("Snake");
-        playingStage.setScene(scene);
-        playingStage.show();
-    }
-
 
 }
