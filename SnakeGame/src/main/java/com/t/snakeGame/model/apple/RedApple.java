@@ -62,8 +62,8 @@ public class RedApple implements Apple {
      * This method generates a random new apple.
      */
     public void newApple(){
-        this.appleX.set(random.nextInt((int)(SCREEN_WIDTH/UNIT_SIZE))*UNIT_SIZE);
-        this.appleY.set(random.nextInt((int)(SCREEN_HEIGHT/UNIT_SIZE))*UNIT_SIZE);
+        this.appleX.set(random.nextInt((int)(CANVAS_WIDTH/UNIT_SIZE))*UNIT_SIZE);
+        this.appleY.set(random.nextInt((int)(CANVAS_HEIGHT/UNIT_SIZE))*UNIT_SIZE);
     }
 
     /**
@@ -127,14 +127,12 @@ public class RedApple implements Apple {
 
         if (isEaten.get() == true) {
             newApple();
-            applesEaten.set(applesEaten.get() + 1);
+            setApplesEaten(getApplesEaten() + 1);
             isEaten.set(false);
             Thread soundThread = new Thread(() -> {
                 soundPlay.executeStrategy();
             });
             soundThread.start();
-        }else {
-            return;
         }
     }
 

@@ -12,7 +12,7 @@
       <BorderPane fx:id="gameScene" prefHeight="750" prefWidth="1300" style="-fx-background-color: black;">
       
           <center>
-              <Canvas fx:id="playingCanvas" height="750" width="1300" />
+              <Canvas fx:id="playingCanvas" height="700.0" width="1300" />
       
           </center>
          <top>

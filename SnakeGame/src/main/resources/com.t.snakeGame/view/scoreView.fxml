@@ -30,10 +30,14 @@
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="totalScore" textFill="#fc310d">
+                        <Label fx:id="totalScore">
                            <font>
                               <Font size="40.0" />
                            </font>
+
+                           <style>
+                              -fx-text-fill: inherit;
+                           </style>
                         </Label>
                      </children>
                      <opaqueInsets>
@@ -61,6 +65,9 @@
                            <font>
                               <Font size="35.0" />
                            </font>
+                            <style>
+                              -fx-text-fill: inherit;
+                            </style>
                         </Label>
                      </children>
                   </HBox>

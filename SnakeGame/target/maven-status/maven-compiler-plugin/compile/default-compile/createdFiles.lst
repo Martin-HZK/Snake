@@ -4,7 +4,6 @@ com\t\snakeGame\controller\PlayingController$1.class
 com\t\snakeGame\view\PlayingView.class
 com\t\snakeGame\model\apple\AppleCreator.class
 com\t\snakeGame\controller\PlayingController$2.class
-com\t\snakeGame\model\UserSettingManager.class
 com\t\snakeGame\view\ScoreView.class
 com\t\snakeGame\controller\InfoController.class
 com\t\snakeGame\view\InfoView.class

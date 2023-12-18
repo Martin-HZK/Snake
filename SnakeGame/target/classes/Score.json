@@ -1,35 +1,43 @@
 {
   "scores": [
     {
-      "name": "a",
+      "name": "",
       "score": "1"
     },
     {
-      "name": "test",
-      "score": "3"
+      "name": "",
+      "score": "1"
     },
     {
-      "name": "llll",
-      "score": "3"
+      "name": "",
+      "score": "1"
     },
     {
-      "name": "jjj",
-      "score": "4"
+      "name": "",
+      "score": "12"
     },
     {
-      "name": "laja",
-      "score": "2"
-    },
-    {
-      "name": "lalalng",
-      "score": "6"
-    },
-    {
-      "name": "checkStuck",
+      "name": "",
       "score": "10"
     },
     {
-      "name": "lala",
+      "name": "",
+      "score": "7"
+    },
+    {
+      "name": "",
+      "score": "0"
+    },
+    {
+      "name": "",
+      "score": "0"
+    },
+    {
+      "name": "",
+      "score": "-1"
+    },
+    {
+      "name": "",
       "score": "1"
     }
   ]

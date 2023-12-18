@@ -64,8 +64,8 @@ public class BonusApple implements Apple{
      * This method generates a random new bonus apple.
      */
     public void newApple(){
-        this.appleX.set(random.nextInt((int)(SCREEN_WIDTH/UNIT_SIZE))*UNIT_SIZE);
-        this.appleY.set(random.nextInt((int)(SCREEN_HEIGHT/UNIT_SIZE))*UNIT_SIZE);
+        this.appleX.set(random.nextInt((int)(CANVAS_WIDTH/UNIT_SIZE))*UNIT_SIZE);
+        this.appleY.set(random.nextInt((int)(CANVAS_HEIGHT/UNIT_SIZE))*UNIT_SIZE);
     }
 
 
@@ -128,14 +128,13 @@ public class BonusApple implements Apple{
         soundPlay.setStrategy(new PlayBonusEatSound());
         if (isEaten.get() == true) {
             newApple();
-            applesEaten.set(applesEaten.get() + 10);
+            setApplesEaten(getApplesEaten() + 3);
+            System.out.println("Bonus apple eaten");
             isEaten.set(false);
             Thread bonusThread = new Thread(() -> {
                     soundPlay.executeStrategy();
             });
             bonusThread.start();
-        }else {
-            return;
         }
     }
 }

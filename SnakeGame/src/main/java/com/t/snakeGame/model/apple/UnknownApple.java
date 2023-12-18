@@ -145,8 +145,8 @@ public class UnknownApple implements Apple{
     /**
      * This method checks if the snake has eaten the apple.
      * If the snake has eaten the apple, then we need to generate a new apple and increase the number of apples eaten.
-     * If eating a bonus apple, then the number of apples eaten will increase by 10.
-     * If eating a bad apple, then the number of apples eaten will decrease by 3.
+     * If eating a bonus apple, then the number of apples eaten will increase by 5.
+     * If eating a bad apple, then the number of apples eaten will decrease by 6.
      */
     @Override
     public void checkApple() {
@@ -159,22 +159,16 @@ public class UnknownApple implements Apple{
             if (isBonus) {
                 setApplesEaten(getApplesEaten() + 5);
                 soundPlay.setStrategy(new PlayBonusEatSound());
-                soundThread = new Thread(() -> {
-                    soundPlay.executeStrategy();
-                });
             }else {
-                // this is a bad apple
                 setApplesEaten(getApplesEaten() - 6);
                 soundPlay.setStrategy(new PlayBadEatSound());
-                soundThread = new Thread(() -> {
-                    soundPlay.executeStrategy();
-                });
             }
+            soundThread = new Thread(() -> {
+                soundPlay.executeStrategy();
+            });
             soundThread.start();
 
             isEaten.set(false);
-        }else {
-            return;
         }
     }
 }

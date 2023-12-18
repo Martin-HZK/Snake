@@ -52,6 +52,8 @@ public class PlayingController {
      * The bonus apple.
      */
     private BonusApple bonusApple;
+
+    private int totalScore = 0;
     /**
      * The timer.
      */
@@ -122,7 +124,7 @@ public class PlayingController {
         snake = snakeCreator.createSnake();
 
         apple = redAppleCreator.createApple(200, 200);
-        unknownApple = unknownAppleCreator.createApple(1000, 650);
+        unknownApple = unknownAppleCreator.createApple(1000, 550);
         bonusApple = bonusAppleCreator.createApple(400, 400);
         ScoreController.playingScore.bind(apple.applesEaten);
         GraphicsContext gc = playingCanvas.getGraphicsContext2D();
@@ -240,8 +242,8 @@ public class PlayingController {
             }
             g.setFill(Color.RED);
             g.setFont(Font.font("Ink Free", FontWeight.BOLD, 40));
-            int score = apple.getApplesEaten() + unknownApple.getApplesEaten() + bonusApple.getApplesEaten();
-            g.fillText("Score: " + score, (CANVAS_WIDTH - ("Score: " + apple.getApplesEaten()).length() * 10) / 2, g.getFont().getSize());
+            totalScore = apple.getApplesEaten() + unknownApple.getApplesEaten() + bonusApple.getApplesEaten();
+            g.fillText("Score: " + totalScore, (CANVAS_WIDTH - ("Score: " + apple.getApplesEaten()).length() * 10) / 2, g.getFont().getSize());
         } else {
             gameOver(g);
             timer.stop();
@@ -267,7 +269,7 @@ public class PlayingController {
     public void gameOver(GraphicsContext g) {
         g.setFill(Color.RED);
         g.setFont(Font.font("Ink Free", FontWeight.BOLD, 40));// Font.font("Ink Free", FontWeight.BOLD, 40)
-        g.fillText("Score: " + this.apple.getApplesEaten(), (CANVAS_WIDTH - ("Score: " + this.apple.getApplesEaten()).length() * 10) / 2, g.getFont().getSize());
+        g.fillText("Score: " + totalScore, (CANVAS_WIDTH - ("Score: " + this.apple.getApplesEaten()).length() * 10) / 2, g.getFont().getSize());
         g.setFill(Color.RED);
         g.setFont(Font.font("Ink Free", FontWeight.BOLD, 75));
         g.fillText("Game Over lol get rekt", (CANVAS_WIDTH - ("Game Over lol get rekt").length() * 35) / 2, CANVAS_HEIGHT / 2);
@@ -276,7 +278,7 @@ public class PlayingController {
         pause.setOnFinished(event -> {
 
             ScoreSubscriber newScore = playScorePublisher.getLastSubscriber();
-            playScorePublisher.updateLastScore(Integer.toString(apple.getApplesEaten()));
+            playScorePublisher.updateLastScore(Integer.toString(totalScore));
             newScore.update();// this is for storing into the json file
             playScorePublisher.addSubscriber(newScore);
             try {

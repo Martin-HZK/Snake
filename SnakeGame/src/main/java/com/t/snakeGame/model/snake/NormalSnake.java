@@ -1,9 +1,6 @@
 package com.t.snakeGame.model.snake;
 
-import static com.t.snakeGame.view.PlayingView.SCREEN_HEIGHT;
-import static com.t.snakeGame.view.PlayingView.SCREEN_WIDTH;
-import static com.t.snakeGame.view.PlayingView.UNIT_SIZE;
-import static com.t.snakeGame.view.PlayingView.GAME_UNITS;
+import static com.t.snakeGame.view.PlayingView.*;
 
 /**
  * This class represents a normal snake object.
@@ -140,7 +137,7 @@ public class NormalSnake implements Snake{
             this.running = false;
         }
         //check if head touches right border
-        if(x[0] > SCREEN_WIDTH) {
+        if(x[0] > CANVAS_WIDTH - UNIT_SIZE) {
             this.running = false;
         }
         //check if head touches top border
@@ -148,7 +145,8 @@ public class NormalSnake implements Snake{
             this.running = false;
         }
         //check if head touches bottom border
-        if(y[0] > SCREEN_HEIGHT) {
+        if(y[0] > CANVAS_HEIGHT - 2*UNIT_SIZE) {
+            System.out.println(y[0]);
             this.running = false;
         }
 
