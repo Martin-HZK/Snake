@@ -13,12 +13,6 @@ import java.io.IOException;
  * It defines the method for switching to info.fxml, userName.fxml, option.fxml and score.fxml.
  */
 public class MainController {
-    private Stage stage;
-    private RedApple apple;
-    private NormalSnake snake;
-
-
-
 
     /**
      * Switch to Info window

@@ -46,9 +46,7 @@ public class OptionController {
 
         textColor.valueProperty().addListener((observable, oldValue, newValue) -> {
             try {
-                System.out.println(newValue.toString());
                 String newColor = toHex(newValue.toString());
-                System.out.println(newColor);
 
                 Main.cssStyle = "-fx-text-fill: " + newColor + ";"+ "-fx-background-color: #000000;"; // do we need getter and setter?
                 Main.getRoot().setStyle(Main.cssStyle);
@@ -64,9 +62,7 @@ public class OptionController {
 
         snakeColor.valueProperty().addListener((observable, oldValue, newValue) -> {
             try {
-                System.out.println(newValue.toString());
                 String newColor = toHex(newValue.toString());
-                System.out.println(newColor);
 
                 PlayingView.setSnakeColor(newColor);
 

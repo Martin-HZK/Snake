@@ -153,7 +153,6 @@ public class ScoreController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(userScores.size());
         ArrayList<ScoreSubscriber> scoreList = new ArrayList<>();
         for (JsonElement scoreName : userScores) {
             JsonObject userScore = scoreName.getAsJsonObject();
