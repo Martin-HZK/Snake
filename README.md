@@ -1,5 +1,3 @@
-# AE2DMS-CW-20411218
-
 ## Changes/Additions to the game
 
 1. Adding different types of apples
@@ -7,10 +5,10 @@
    * Yellow - bonus apple, 3pts
    * Purple - Unknown apple, -6pts or 5pts randomly
 2. Adding different sound effect when eating different apples.
-3. Adding the game pause/resume function when playing the game.This serves for the situation when user need to pause to plan the route.
+3. Adding the game pause/resume function when playing the game.
 4. Adding the user selection of the different **themes** and **snake color** with color pane. Every time the user restart game, the game will start with the previous user setting. The user is also allowed to choose default setting.
 5. Adding the username input window. Before each round, the user is asked to input its name and it will be further displayed with its playing scores.
-6. Adding the score board for the user to view history scores. The scores will be stored with the user's name. The user can also click to clear the score board.
+6. Adding the score board for the user to view history scores in the score window. The scores will be stored with the user's name. The user can also click to clear the score board.
    Additionally, each round the user will get the level title, including rookie, skilled, expert,master, together with different snake image.
 
 ## Design patterns applied
