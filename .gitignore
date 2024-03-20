@@ -1,3 +1,4 @@
 *.PNG
 **/*.class
 target/**/*.class
+.pdf
